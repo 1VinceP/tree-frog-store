@@ -1,0 +1,22 @@
+.store-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 35px;
+    width: 75%;
+    border: none;
+    border-radius: 10px;
+    background: #91DC5A;
+    font-size: 20px;
+    letter-spacing: .75px;
+}
+
+.about-button {
+    margin-top: 10px;
+    height: 35px;
+    width: 75%;
+    border: none;
+    border-radius: 10px;
+    background: #5A9ADC;
+    font-size: 20px;
+    letter-spacing: .75px;
+}

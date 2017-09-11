@@ -1,0 +1,43 @@
+html {
+    box-sizing: border-box;
+}
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+.footer {
+  height: 200px;
+  width: 100%;
+  background: beige;
+  bottom: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.contact-info {
+  margin-top: 20px;
+}
+
+.credits {
+  font-size: 10px;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  text-align: right;
+  width: 100%;
+}
+
+.copyright {
+  align-self: flex-end;
+}
