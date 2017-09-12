@@ -20,6 +20,7 @@ class SideNav extends Component {
                 <a href={ process.env.REACT_APP_LOGIN } className='decor' ><div className='nav-tabs' id='login'>Log in</div></a>
                 <Link to='/' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Home</div></Link>
                 <Link to='/gallery' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Gallery</div></Link>
+                <Link to='/custom-order' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Place an Order</div></Link>
                 <Link to='/cart' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Cart ({`${cartAmount}`})</div></Link>                
                 <Link to='/about' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>About</div></Link>
             </div>

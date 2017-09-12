@@ -19,11 +19,10 @@ class App extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-      toggleMenu() {
-      this.setState({
-          displayMenu: !this.state.displayMenu
-      })
-      // console.log(this.state.displayMenu)
+  toggleMenu() {
+    this.setState({
+        displayMenu: !this.state.displayMenu
+    })
   }
 
   render() {

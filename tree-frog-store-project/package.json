@@ -12,6 +12,7 @@
     "express-session": "^1.15.5",
     "gsap": "^1.20.2",
     "massive": "^3.3.0",
+    "nodemailer": "^4.1.0",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.0",
     "react": "^15.6.1",
@@ -19,8 +20,10 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^3.7.2",
-    "redux-promise-middleware": "^4.4.1"
+    "redux-promise-middleware": "^4.4.1",
+    "stripe": "^4.25.0"
   },
   "scripts": {
     "start": "react-scripts start",

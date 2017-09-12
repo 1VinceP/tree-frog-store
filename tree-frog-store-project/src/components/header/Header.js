@@ -10,7 +10,7 @@ class Header extends Component {
 
     render() {
 
-    // console.log( this.props.match )
+        
         return(
             <div>
                 <div className='header'>

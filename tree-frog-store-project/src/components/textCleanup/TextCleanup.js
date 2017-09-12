@@ -14,12 +14,27 @@ export function description() {
 export function homeBody() {
     return(
         <div>
-            <p>Here at Tree Frog Productions, we are dedicated to producing the finest Kanzashi in America. All of our products are custom made to order, and we only use the finest of materials to ensure quality and longevity.</p>
-            <Link to='/store'><button className='store-button'>Gallery</button></Link>
+            <p>Here at Tree Frog Productions, we are dedicated to producing the finest Kanzashi in America. All of our products are custom made to order, and we only use the finest of materials to ensure quality and longevity. View some of her creations in the Gallery</p>
+            <Link to='/gallery'><button className='store-button'>Gallery</button></Link>
+
+            <br/>
+            <p>Every product is made custom to order, so you can head on over to our customization page and tell us what you would like!</p>
+            <Link to='/custom-order'><button className='custom-order-button'>Customize your order</button></Link>
 
             <br/>
             <p>Rebecca has been making Kanzashi for weddings and other events since Christmastime of 2016.</p>
             <Link to='/about'><button className='about-button'>Learn more</button></Link>
+        </div>
+    )
+}
+
+export function aboutBody() {
+    return(
+        <div>
+            <h1>Meet Rebecca Palmer!</h1>
+
+            <br/>
+            <p>Her journey began at the close of the year of 2016.</p>
         </div>
     )
 }
