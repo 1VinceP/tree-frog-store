@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
 import './sideNav.css'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 require('dotenv').config();
 
 
 class SideNav extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            user: ''
+        }
+    }
+
+    componentDidMount() {
+        axios.get( 'api/user' ).then( user => {
+            this.setState({
+                user: user
+            })
+        })
+        console.log( 'user:', this.state.user )
+    }
 
     render() {
 
@@ -17,7 +34,10 @@ class SideNav extends Component {
                     <button className='close-button' onClick={ () => this.props.toggleMenu() }>&#10006;</button>
                 </div>
 
+
                 <a href={ process.env.REACT_APP_LOGIN } className='decor' ><div className='nav-tabs' id='login'>Log in</div></a>
+
+
                 <Link to='/' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Home</div></Link>
                 <Link to='/gallery' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Gallery</div></Link>
                 <Link to='/custom-order' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Place an Order</div></Link>

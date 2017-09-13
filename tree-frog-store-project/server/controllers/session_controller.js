@@ -1,7 +1,12 @@
 module.exports = {
     getSessionUser: ( req, res, next ) => {
-        req.app.get('db').find_user( req.session.user.id ).then( response => {
-            res.status(200).send( response )
-        })
+        if( !req.user ) {
+            console.log( 'no user' )
+            res.send( null )
+        }
+        else {
+            console.log( req.user )
+            res.send( req.user )
+        }
     }
 }

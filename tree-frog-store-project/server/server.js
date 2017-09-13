@@ -20,13 +20,13 @@ const strategy = require('./strategy')
 
 let app = express();
 app.use( bodyParser.json() );
+app.use( cors() );
 app.use( session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }) );
 // app.use( checkForSession );
-app.use( cors() );
 app.use( passport.initialize() );
 app.use( passport.session() );
 passport.use( module.exports = new Auth0Strategy({
@@ -46,18 +46,18 @@ passport.use( module.exports = new Auth0Strategy({
                 db.create_user( [profile.displayName, profile.emails[0].value, profile.id] )
                   .then( user => {
                       console.log( 'New User Created' )
-                    return done( null, user[0] )
+                    return done( null, user )
                 })
             };
         } );
-        return done( null, profile )
+        // return done( null, profile )
     }) );
 
 
 ///////////// Connecting database
 // postgres:[username]:[password]@[host]:[port]/[database]
 // postgres://ergdmstw:${productPass}@stampy.db.elephantsql.com:5432/ergdmstw
-console.log( process.env.SQLURL );
+console.log( chalk.magenta(process.env.SQLURL) );
 massive( process.env.SQLURL ).then( db => {
         app.set( 'db', db );
         app.get('db').init.seed().then( res => console.log( res ) )
@@ -67,12 +67,17 @@ massive( process.env.SQLURL ).then( db => {
 
 ///////////////////////////////////////////////////////////////// AUTHENTICATION
 passport.serializeUser( ( user, done ) => {
+    // console.log( user )
     done( null, user )
 } );
 passport.deserializeUser( ( obj, done ) => {
-    app.get('db').find_session_user( user[0].id ).then( user => {
-        return done( null, user )
-    })
+    // console.log( 'dev', obj )
+    // app.get('db').find_session_user( user[0].id ).then( user => {
+
+        done( null, obj[0] )
+
+
+    // })
 } );
 
 // AUTH CONTROLLER
@@ -83,7 +88,7 @@ app.get( '/auth/callback', passport.authenticate( 'auth0', {
     failureFlash: true
 }) );
 app.get( '/auth/me', auth_controller.login );
-app.get( '/auth/logout', auth_controller.logout );
+// app.get( '/auth/logout', auth_controller.logout );
 
 // SESSION CONTROLLER
 app.get( 'api/user', session_controller.getSessionUser )

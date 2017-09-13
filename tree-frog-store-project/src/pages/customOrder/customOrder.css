@@ -7,6 +7,12 @@ html {
 
 .order-body {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-div {
+    display: flex;
     /* flex-direction: column; */
     align-items: center;
     /* flex-wrap: wrap; */
@@ -27,4 +33,28 @@ html {
 .image-display img {
     width: 192px;
     height: 160px;
+}
+
+.submit-order-button {
+    margin-top: 10px;
+    /* margin-bottom: 30px; */
+    height: 35px;
+    width: 75%;
+    border: none;
+    border-radius: 10px;
+    background: #91DC5A;
+    font-size: 20px;
+    letter-spacing: .75px;
+}
+
+.clear-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 35px;
+    width: 75%;
+    border: none;
+    border-radius: 10px;
+    background: #DC5A5A;
+    font-size: 20px;
+    letter-spacing: .75px;
 }

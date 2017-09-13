@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './cart.css';
 
 class Cart extends Component {
@@ -16,6 +17,8 @@ class Cart extends Component {
     }
 
     render() {
+
+        console.log( this.props.orderStyle )
         return(
             <div className='cart-body'>
                 <br/><br/>
