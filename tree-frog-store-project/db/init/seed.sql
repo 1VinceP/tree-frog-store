@@ -8,9 +8,9 @@ CREATE TABLE Users
 (
     id SERIAL PRIMARY KEY,
     username TEXT,
-    password TEXT,
     email TEXT,
-    street TEXT,
+    street1 TEXT,
+    street2 TEXT,
     city TEXT,
     state TEXT,
     zip INTEGER,
@@ -19,9 +19,9 @@ CREATE TABLE Users
 );
 
 INSERT INTO Users
-    ( username, password, email, street, city, state, zip, orderId, auth_id )
+    ( username, email, street1, street2, city, state, zip, orderId, auth_id )
     VALUES
-        ( 'vincent', 'password', 'myemail@gmail.com', '1234 Sesame St', 'Provo', 'UT', '98765', null, null );
+        ( 'vincent', 'myemail@gmail.com', '1234 Sesame St', null, 'Provo', 'UT', '98765', null, null );
 
 ------------------------------------------------------------------------- PRODUCTS TABLE
 

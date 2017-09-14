@@ -1,12 +1,26 @@
+const chalk = require('chalk')
+
 module.exports = {
     getSessionUser: ( req, res, next ) => {
         if( !req.user ) {
-            console.log( 'no user' )
-            res.send( null )
+            console.log( chalk.red('No User') )
+            return res.send( null )
         }
-        else {
-            console.log( req.user )
-            res.send( req.user )
+        else if( req.user ) {
+            console.log( 'It Works!', req.user )
+            return res.send( req.user )
         }
+    },
+
+    updateAddress: ( req, res, next ) => {
+        const { id, street1, street2, city, state, zip } = req.body
+
+        req.app.get('db').update_address( [ id, street1, street2, city, state, zip ] )
+            .then( () => res.status(200).send() )
+            .catch( () => {
+                console.log('request failed')
+                console.log( id, street1, street2, city, state, zip )
+                res.status(500).send()
+            } )
     }
 }

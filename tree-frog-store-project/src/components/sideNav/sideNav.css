@@ -61,8 +61,32 @@ html {
     color: black;
 }
 
+.profile-tabs {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #C1C1C1;
+}
+
 #login {
     color: #91DC5A;
+}
+
+#account {
+    height: 80px;
+    width: 50%;
+    border: none;
+}
+
+#logout {
+    height: 80px;
+    width: 50%;
+    color: #DC5A5A;
+    padding-left: 30px;
+    border: none;
+    border-left: solid 1px #C1C1C1;
+    border-radius: 5px;
 }
 
 .decor {

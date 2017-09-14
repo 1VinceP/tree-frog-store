@@ -88,16 +88,17 @@ app.get( '/auth/callback', passport.authenticate( 'auth0', {
     failureFlash: true
 }) );
 app.get( '/auth/me', auth_controller.login );
-// app.get( '/auth/logout', auth_controller.logout );
+app.get( '/auth/logout', auth_controller.logout );
 
 // SESSION CONTROLLER
-app.get( 'api/user', session_controller.getSessionUser )
+app.get( '/api/user', session_controller.getSessionUser )
+app.put( '/api/updateaddress', session_controller.updateAddress )
 
 ///////////////////////////////////////////////////////////////// END AUTHENTICATION
 
 ///////////////////////////////////////////////////////////////// DATABASE CALLS
 // PRODUCTS CONTROLLERS
-app.get( '/gallery', products_controller.retrieveAll )
+app.get( '/api/gallery', products_controller.retrieveAll )
 
 ///////////////////////////////////////////////////////////////// END DATABASE CALLS
 

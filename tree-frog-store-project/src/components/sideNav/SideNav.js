@@ -10,17 +10,26 @@ class SideNav extends Component {
         super();
 
         this.state = {
-            user: ''
+            username: '',
+            userId: null,
         }
     }
 
     componentDidMount() {
-        axios.get( 'api/user' ).then( user => {
-            this.setState({
-                user: user
-            })
+        axios.get( '/api/user' ).then( user => {
+            if( user.data.username !== undefined ) {
+                this.setState({
+                    username: ' ' + user.data.username,
+                    userId: user.data.id,
+                    currentS1: user.data.street1,
+                    currentS2: user.data.street2,
+                    currentCity: user.data.city,
+                    currentState: user.data.state,
+                    currentZip: user.data.zip
+                })
+            }
+            console.log( 'user:', this.state.username )
         })
-        console.log( 'user:', this.state.user )
     }
 
     render() {
@@ -30,13 +39,29 @@ class SideNav extends Component {
         return(
             <div className={ 'mobile-menu-container ' + (this.props.displayMenu ? 'show' : null) }>
                 <div className='menu-header'>
-                    <div>Welcome{`${''}`}!</div>
+                    <div>Welcome{`${this.state.username}`}!</div>
                     <button className='close-button' onClick={ () => this.props.toggleMenu() }>&#10006;</button>
                 </div>
 
+                { !this.state.username ? <a href={ process.env.REACT_APP_LOGIN } className='decor' >
+                    <div className='nav-tabs' id='login'>Log In</div>
+                </a> 
+                : <section className='profile-tabs'>
 
-                <a href={ process.env.REACT_APP_LOGIN } className='decor' ><div className='nav-tabs' id='login'>Log in</div></a>
+                    <Link to={ { pathname:'/account', query: { id: this.state.userId,
+                                                               currentStreet1: this.state.currentS1,
+                                                               street2: this.state.currentS2,
+                                                               city: this.state.currentCity,
+                                                               state: this.state.currentState,
+                                                               zip: this.state.currentZip } } }
+                           className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs' id='account'>Account</div></Link>
 
+                    <a href={ process.env.REACT_APP_LOGOUT } className='decor'>
+                        <div className='nav-tabs' id='logout'>Log Out</div>
+                    </a>
+                </section> }
+                
+                
 
                 <Link to='/' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Home</div></Link>
                 <Link to='/gallery' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Gallery</div></Link>
