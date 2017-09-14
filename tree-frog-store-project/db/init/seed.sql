@@ -21,7 +21,7 @@ CREATE TABLE Users
 INSERT INTO Users
     ( username, email, street1, street2, city, state, zip, orderId, auth_id )
     VALUES
-        ( 'vincent', 'myemail@gmail.com', '1234 Sesame St', null, 'Provo', 'UT', '98765', null, null );
+        ( 'vincent', 'myemail@gmail.com', '1776 Bald Eagle Ave', null, 'Provo', 'Utah', '98765', null, null );
 
 ------------------------------------------------------------------------- PRODUCTS TABLE
 

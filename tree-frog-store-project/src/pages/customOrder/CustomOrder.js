@@ -58,7 +58,7 @@ class CustomOrder extends Component {
     };
 
     resetSelections() {
-        if( window.confirm( 'Are you sure you want to clear your selections?' ) ) {
+        if( window.confirm( 'Are you sure you want to clear your selections? Anything you have added to your cart will still be there' ) ) {
             document.getElementById("orderForm").reset();
             this.setState({
                 orderType: '',
@@ -67,6 +67,7 @@ class CustomOrder extends Component {
                 orderSecondaryColor: '',
                 orderDecoration: '',
                 orderDecoColor: '',
+                orderCenterCandle: '',
                 orderCenterBase: '',
                 orderRequest: ''
             })
