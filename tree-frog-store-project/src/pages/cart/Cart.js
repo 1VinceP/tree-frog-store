@@ -23,7 +23,7 @@ class Cart extends Component {
             <div className='cart-body'>
                 <br/><br/>
                 <div>Cart</div>
-                <Link to='/checkout'>Checkout</Link>
+                <Link to='/checkout'><button className='checkout-button'>Checkout</button></Link>
             </div>
         )
     }

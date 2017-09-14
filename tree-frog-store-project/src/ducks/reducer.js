@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const initialState = {
     orderType: '',
     orderMaterial: '',
@@ -5,7 +7,9 @@ const initialState = {
     orderSecondaryColor: '',
     orderDecoration: '',
     orderDecoColor: '',
-    orderRequest: ''
+    orderRequest: '',
+
+    user: false
 }
 
 const UPDATE_ORDER_TYPE = 'UPDATE_ORDER_TYPE'
@@ -15,6 +19,8 @@ const UPDATE_ORDER_SECONDARY_COLOR = 'UPDATE_ORDER_SECONDARY_COLOR'
 const UPDATE_ORDER_DECORATION = 'UPDATE_ORDER_DECORATION'
 const UPDATE_ORDER_DECO_COLOR = 'UPDATE_ORDER_DECO_COLOR'
 const UPDATE_ORDER_REQUEST = 'UPDATE_ORDER_REQUEST'
+
+const GET_USER = 'GET_USER'
 
 export function getOrderType( orderType ) {
     return {
@@ -65,6 +71,13 @@ export function getOrderRequest( orderRequest ) {
     }
 };
 
+export function getUser() {
+    return {
+        type: GET_USER,
+        payload: axios.get( '/api/user' ).then( user => user.data )
+    }
+};
+
 function reducer( state = initialState, action ) {
     switch( action.type ) {
         case UPDATE_ORDER_TYPE:
@@ -79,6 +92,9 @@ function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { orderDecoColor: action.payload });
         case UPDATE_ORDER_REQUEST:
             return Object.assign( {}, state, { orderRequest: action.payload });
+
+        case GET_USER:
+            return Object.assign( {}, state, { user: action.payload } )
 
         default: return state;
     }

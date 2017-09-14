@@ -28,9 +28,14 @@ INSERT INTO Users
 CREATE TABLE Products
  (
      id SERIAL PRIMARY KEY,
-     name TEXT,
-     description TEXT,
      type TEXT,
+     material TEXT,
+     baseColor TEXT,
+     secondaryColor TEXT,
+     decoration TEXT,
+     decoColor TEXT,
+     centerDeco TEXT,
+     request VARCHAR(300),
      imgUrl TEXT
  );
 

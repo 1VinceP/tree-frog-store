@@ -22,12 +22,7 @@ class SideNav extends Component {
                 this.setState({
                     username: ' ' + user.data.username,
                     userId: user.data.id,
-                    email: user.data.email,
-                    // currentS1: user.data.street1,
-                    // currentS2: user.data.street2,
-                    // currentCity: user.data.city,
-                    // currentState: user.data.state,
-                    // currentZip: user.data.zip
+                    email: user.data.email
                 })
             }
             console.log( 'user:', this.state.username )
@@ -70,7 +65,7 @@ class SideNav extends Component {
                 <Link to='/custom-order' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Place an Order</div></Link>
                 <Link to='/cart' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Cart ({`${cartAmount}`})</div></Link>                
                 <Link to='/about' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>About</div></Link>
-                {this.state.username === 'vpalmergraphics@gmail.com'
+                {this.state.email === 'vpalmergraphics@gmail.com'
                     ? <Link to='/admin' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Admin</div></Link>
                     : null
                 }

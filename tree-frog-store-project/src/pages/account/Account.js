@@ -78,7 +78,6 @@ class Account extends Component {
 
     render() {
 
-        console.log( this.state.currentCity )
         return(
             <div className='account-body'>
                 <div className='bg-box'>
@@ -102,8 +101,13 @@ class Account extends Component {
                     <input placeholder={this.state.currentZip} name='zip' onChange={ e => this.handleInputChange(e) } />
                     <br/>
                     <button className='change-button' onClick={ this.submitAddress }>Submit Changes</button>
-
                 </div>
+
+                {/* Previous Orders Section Here */}
+                <div className='bg-box'>
+                    <h2>Previous Orders</h2>
+                </div>
+
             </div>
         )
     }

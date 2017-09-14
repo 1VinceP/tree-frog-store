@@ -38,3 +38,19 @@ export function aboutBody() {
         </div>
     )
 }
+
+export function attributeDescription() {
+    return(
+        <div>
+            <br/>
+            <p><b>Product Type:</b><br/>This is the big picture</p><br/>
+            <p><b>Material:</b><br/>What it's made out of. Currently only ribbon</p><br/>
+            <p><b>Base Color:</b><br/>The most prominent color</p><br/>
+            <p><b>Secondary Color:</b><br/>The accent color</p><br/>
+            <p><b>Decoration:</b><br/>An addition flair</p><br/>
+            <p><b>Decoration Color:</b><br/>The color of the decoration</p><br/>
+            <p><b>Centerpiece Candle:</b><br/>The candle design (if any)</p><br/>
+            <p><b>Centerpiece Base</b><br/>The type of base for the centerpiece</p><br/>
+        </div>
+    )
+}

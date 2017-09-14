@@ -8,5 +8,30 @@ html {
 .cart-body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+}
+
+.checkout-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 35px;
+    width: 75%;
+    border: none;
+    border-radius: 10px;
+    background: #ffb347;
+    font-size: 20px;
+    letter-spacing: .75px;
+}
+
+.cart-display-box {
+    width: 90%;
+    background: beige; 
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: -20px;
+    font-size: 22px;
+    text-align: center;
+    line-height: 110%;
+    margin-top: 10px;
+    display: flex;
 }
