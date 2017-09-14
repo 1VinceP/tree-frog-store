@@ -12,6 +12,7 @@ class SideNav extends Component {
         this.state = {
             username: '',
             userId: null,
+            email: ''
         }
     }
 
@@ -21,11 +22,12 @@ class SideNav extends Component {
                 this.setState({
                     username: ' ' + user.data.username,
                     userId: user.data.id,
-                    currentS1: user.data.street1,
-                    currentS2: user.data.street2,
-                    currentCity: user.data.city,
-                    currentState: user.data.state,
-                    currentZip: user.data.zip
+                    email: user.data.email,
+                    // currentS1: user.data.street1,
+                    // currentS2: user.data.street2,
+                    // currentCity: user.data.city,
+                    // currentState: user.data.state,
+                    // currentZip: user.data.zip
                 })
             }
             console.log( 'user:', this.state.username )
@@ -35,7 +37,7 @@ class SideNav extends Component {
     render() {
 
         let cartAmount = 0
-        console.log( this.props.displayMenu )
+        console.log( 'navIsOpen:', this.props.displayMenu )
         return(
             <div className={ 'mobile-menu-container ' + (this.props.displayMenu ? 'show' : null) }>
                 <div className='menu-header'>
@@ -68,6 +70,10 @@ class SideNav extends Component {
                 <Link to='/custom-order' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Place an Order</div></Link>
                 <Link to='/cart' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Cart ({`${cartAmount}`})</div></Link>                
                 <Link to='/about' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>About</div></Link>
+                {this.state.username === 'vpalmergraphics@gmail.com'
+                    ? <Link to='/admin' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Admin</div></Link>
+                    : null
+                }
             </div>
         )
     }

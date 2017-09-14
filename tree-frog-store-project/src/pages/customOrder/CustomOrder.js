@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './customOrder.css';
 import { getOrderType, getOrderMaterial, getOrderBaseColor, getOrderSecondaryColor, getOrderDecoration, getOrderDecoColor, getOrderRequest } from '../../ducks/reducer';
@@ -25,12 +25,12 @@ class CustomOrder extends Component {
         window.scrollTo( 0, 0 )
     };
 
-    handleInputChangeP( e ) {
+    handleInputChange( e ) {
         let value = e.target.value
         let name = e.target.name
 
         this.setState({
-            orderType: value
+            [name]: value
         })
         console.log( this.state.orderType )
     };
@@ -54,7 +54,7 @@ class CustomOrder extends Component {
 
     render() {
 
-        const { getOrderType, getOrderMaterial, getOrderBaseColor, getOrderSecondaryColor, getOrderDecoration, getOrderDecoColor, getOrderRequest } = this.props;
+        // const { getOrderType, getOrderMaterial, getOrderBaseColor, getOrderSecondaryColor, getOrderDecoration, getOrderDecoColor, getOrderRequest } = this.props;
 
         return(
             <div className='order-body'>
@@ -70,7 +70,7 @@ class CustomOrder extends Component {
 
                     <form className='form-content' id='orderForm'>
                         <p>Product Type: </p>
-                        <select name='type' onChange={ e => this.handleInputChangeP(e) }>
+                        <select name='type' onChange={ e => this.handleInputChange(e) }>
                             <option value=''>--Select a style--</option>
                             <option value='headband'>Headband</option>
                             <option value='flower'>Flower</option>
@@ -86,6 +86,14 @@ class CustomOrder extends Component {
                         <br/>
                         <p>Base Color: </p>
                         <select name='baseColor' onChange={ e => this.handleInputChange(e) }>
+                            <option value=''>--Select a color--</option>
+                            <option value='pink'>Pink</option>
+                            <option value='sky-blue'>Sky Blue</option>
+                            <option value='lime-green'>Lime Green</option>
+                        </select>
+                        <br/>
+                        <p>Secondary Color: </p>
+                        <select name='secondaryColor' onChange={ e => this.handleInputChange(e) }>
                             <option value=''>--Select a color--</option>
                             <option value='pink'>Pink</option>
                             <option value='sky-blue'>Sky Blue</option>

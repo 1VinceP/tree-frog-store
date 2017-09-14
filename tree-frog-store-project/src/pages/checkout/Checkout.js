@@ -32,11 +32,11 @@ class Checkout extends Component {
         token.card = void 0;
         console.log('token', token);
         axios.post('http://localhost:9060/api/payment', { token, amount: 1000 /* the amount actually charged*/ } ).then(response => {
-            this.onPurchaseConfirmation();
+            // this.onPurchaseConfirmation();
             // this.setState({
             //     redirect: true
             // })
-            // alert('Thanks for your purchase')
+            alert('Thanks for your purchase')
         });
     }
 
@@ -54,7 +54,7 @@ class Checkout extends Component {
                     amount={1000} // The amount displayed at the bottom of the payment form
                 />
 
-                <div onClick={ this.onPurchaseConfirmation }>Send email</div>
+                {/* <div onClick={ this.onPurchaseConfirmation }>Send email</div> */}
 
             </div>
         )

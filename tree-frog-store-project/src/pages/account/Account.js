@@ -24,18 +24,17 @@ class Account extends Component {
     }
 
     componentDidMount() {
-        window.scrollTo( 0, 0 )        
-
-        axios.get( '/api/user' ).then( user => {
-            if( user.data.username !== undefined ) {
-                this.setState({
-                    currentS1: user.data.street1,
-                    currentS2: user.data.street2,
-                    currentCity: user.data.city,
-                    currentState: user.data.state,
-                    currentZip: user.data.zip
-                })
-            }
+        window.scrollTo( 0, 0 )   
+        
+        axios.get( '/api/getaddress' ).then( response => {
+            console.log( response )
+            this.setState({
+                currentS1: response.data[0].street1,
+                currentS2: response.data[0].street2,
+                currentCity: response.data[0].city,
+                currentState: response.data[0].state,
+                currentZip: response.data[0].zip
+            })
         })
         console.log( this.state.currentS1 )
     }
@@ -62,11 +61,24 @@ class Account extends Component {
             zip: this.state.zip === null ? this.state.currentZip : this.state.zip
         }
 
-        axios.put( '/api/updateaddress', body ).then( console.log( 'Address Updated!' ) )
+        axios.put( '/api/updateaddress', body ).then( ( response ) => {
+            
+            axios.get( '/api/getaddress' ).then( response => {
+                console.log( response )
+                this.setState({
+                    currentS1: response.data[0].street1,
+                    currentS2: response.data[0].street2,
+                    currentCity: response.data[0].city,
+                    currentState: response.data[0].state,
+                    currentZip: response.data[0].zip
+                })
+            })
+        } )
     }
 
     render() {
 
+        console.log( this.state.currentCity )
         return(
             <div className='account-body'>
                 <div className='bg-box'>

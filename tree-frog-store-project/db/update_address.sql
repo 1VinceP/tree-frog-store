@@ -4,4 +4,5 @@ UPDATE Users
         city = $4,
         state = $5,
         zip = $6
-            WHERE id = $1;
+            WHERE id = $1
+                RETURNING *;

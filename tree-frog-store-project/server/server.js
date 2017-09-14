@@ -60,9 +60,9 @@ passport.use( module.exports = new Auth0Strategy({
 console.log( chalk.magenta(process.env.SQLURL) );
 massive( process.env.SQLURL ).then( db => {
         app.set( 'db', db );
-        app.get('db').init.seed().then( res => console.log( res ) )
-    } ).catch( err => {
-        console.log( err );
+    //     app.get('db').init.seed().then( res => console.log( res ) )
+    // } ).catch( err => {
+        // console.log( err );
 } )
 
 ///////////////////////////////////////////////////////////////// AUTHENTICATION
@@ -93,6 +93,7 @@ app.get( '/auth/logout', auth_controller.logout );
 // SESSION CONTROLLER
 app.get( '/api/user', session_controller.getSessionUser )
 app.put( '/api/updateaddress', session_controller.updateAddress )
+app.get( '/api/getaddress', session_controller.getAddress )
 
 ///////////////////////////////////////////////////////////////// END AUTHENTICATION
 

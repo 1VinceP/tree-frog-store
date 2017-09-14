@@ -16,11 +16,17 @@ module.exports = {
         const { id, street1, street2, city, state, zip } = req.body
 
         req.app.get('db').update_address( [ id, street1, street2, city, state, zip ] )
-            .then( () => res.status(200).send() )
+            .then( (response) => res.status(200).send(response) )
             .catch( () => {
                 console.log('request failed')
                 console.log( id, street1, street2, city, state, zip )
                 res.status(500).send()
             } )
+    },
+
+    getAddress: ( req, res, next ) => {
+        req.app.get('db').get_address( req.user.id ).then( (response) => {
+            res.status(200).send(response)
+        })
     }
 }
