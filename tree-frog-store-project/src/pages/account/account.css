@@ -25,11 +25,11 @@ html {
     background: beige; 
     padding: 20px;
     border-radius: 10px;
-    margin-top: -20px;
     font-size: 22px;
     text-align: center;
     line-height: 110%;
     margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,4 +57,32 @@ html {
     background: #ffb347;
     font-size: 20px;
     letter-spacing: .75px;
+}
+
+.orders-box {
+    width: 90%;
+    background: beige; 
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 110%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.orders-box h2 {
+    font-size: 18px;
+}
+
+.account-cart-card {
+    width: 90%;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }

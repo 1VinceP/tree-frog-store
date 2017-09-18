@@ -62,7 +62,7 @@ massive( process.env.SQLURL ).then( db => {
         app.set( 'db', db );
     //     app.get('db').init.seed().then( res => console.log( res ) )
     // } ).catch( err => {
-        // console.log( err );
+    //     console.log( err );
 } )
 
 ///////////////////////////////////////////////////////////////// AUTHENTICATION
@@ -98,8 +98,14 @@ app.get( '/api/getaddress', session_controller.getAddress )
 ///////////////////////////////////////////////////////////////// END AUTHENTICATION
 
 ///////////////////////////////////////////////////////////////// DATABASE CALLS
-// PRODUCTS CONTROLLERS
-app.get( '/api/gallery', products_controller.retrieveAll )
+// GET ALL FOR THE GALLERY
+app.get( '/api/products', products_controller.retrieveAll )
+
+// ADD NEW PRODUCT
+app.post( '/api/createProd', products_controller.createProduct )
+
+// GET ITEMS FOR USER'S CART
+app.get( '/api/cart/:id', products_controller.getCart )
 
 ///////////////////////////////////////////////////////////////// END DATABASE CALLS
 

@@ -10,7 +10,7 @@ class CustomOrder extends Component {
 
         this.state = {
             orderType: '',
-            orderMaterial: '',
+            orderMaterial: 'ribbon',
             orderBaseColor: '',
             orderSecondaryColor: '',
             orderDecoration: '',
@@ -20,6 +20,7 @@ class CustomOrder extends Component {
             orderRequest: '',
 
             user: false,
+            userId: null
         }
 
         this.submitOrder = this.submitOrder.bind(this);
@@ -29,18 +30,17 @@ class CustomOrder extends Component {
     componentDidMount() {
         window.scrollTo( 0, 0 )
 
-        // const { getUser } = this.props;
-        // this.setState( {user: getUser()} )
-
         axios.get( '/api/user' ).then( user => {
             if( user.data.username !== undefined ) {
                 this.setState({
-                    user: true
+                    user: true,
+                    userId: user.data.id
                 })
             }
+            console.log( 'user:', this.state.user )
+            console.log( 'userId', this.state.userId )
         })
         
-        console.log( 'user:', this.state.user )
     };
 
     handleInputChange( e ) {
@@ -50,16 +50,32 @@ class CustomOrder extends Component {
         this.setState({
             [name]: value
         })
-        console.log( 'type:', this.state.orderType )
     };
 
     submitOrder() {
-        alert('Please go to your cart to purchase your item(s)')
+        alert('Your item has been added to your cart');
+        let body = {
+            type: this.state.orderType,
+            material: this.state.orderMaterial,
+            baseColor: this.state.orderBaseColor,
+            secondaryColor: this.state.orderSecondaryColor,
+            decoration: this.state.orderDecoration,
+            decoColor: this.state.orderDecoColor,
+            centerBase: this.state.orderCenterBase,
+            centerCandle: this.state.orderCenterCandle,
+            request: this.state.orderRequest,
+            creatorId: this.state.userId,
+            paid: false,
+            shipped: false
+        }
+
+        axios.post( '/api/createProd', body )
     };
 
     resetSelections() {
         if( window.confirm( 'Are you sure you want to clear your selections? Anything you have added to your cart will still be there' ) ) {
             document.getElementById("orderForm").reset();
+
             this.setState({
                 orderType: '',
                 orderMaterial: '',
@@ -95,13 +111,13 @@ class CustomOrder extends Component {
                 }
                 
                 <div className='order-div'>
-                    <p className='order-header'>Please specify directions for each attribute marked with a star (*) in the comments section
+                    <div className='order-header'>Please specify directions for each attribute marked with a star (*) in the comments section
                         <hr/>
-                        <p className='show-him'><i>Hover over me for more info on each attribute</i>
+                        <div className='show-him'><i>Hover over me for more info on each attribute</i>
                         <div className='show-me'>
                             { attributeDescription() }
-                        </div></p>
-                    </p>
+                        </div></div>
+                    </div>
                     
                     <br/>
 
@@ -216,7 +232,7 @@ class CustomOrder extends Component {
                 } */}
                 <button className='submit-order-button' onClick={ this.submitOrder }>Submit Item to Cart</button>
                 
-                <button className='clear-button' onClick={this.resetSelections}>Clear Selections</button>
+                <button className='clear-button' onClick={ this.resetSelections }>Clear Selections</button>
             </div>
         )
     }

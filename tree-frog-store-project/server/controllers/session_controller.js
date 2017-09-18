@@ -7,7 +7,7 @@ module.exports = {
             return res.send( null )
         }
         else if( req.user ) {
-            console.log( 'It Works!', req.user )
+            console.log( chalk.green('It Works!'), req.user )
             return res.send( req.user )
         }
     },

@@ -28,22 +28,27 @@ INSERT INTO Users
 CREATE TABLE Products
  (
      id SERIAL PRIMARY KEY,
+     name TEXT,
      type TEXT,
      material TEXT,
      baseColor TEXT,
      secondaryColor TEXT,
      decoration TEXT,
      decoColor TEXT,
-     centerDeco TEXT,
+     centerCandle TEXT,
+     centerBase TEXT,
      request VARCHAR(300),
-     imgUrl TEXT
+     imgUrl TEXT,
+     creatorId INTEGER,
+     paid BOOLEAN,
+     shipped BOOLEAN
  );
 
  INSERT INTO Products
-    ( name, description, type, imgUrl )
+    ( name, type, material, baseColor, secondaryColor, decoration, decoColor, centerCandle, centerBase, request, imgUrl, creatorId, paid, shipped )
     VALUES
-        ( 'Flower Girl Headband', 'Double Butterfly', 'headband', 'https://photos-2.dropbox.com/t/2/AADFz574Y9bpZ60sXu-F-xH0Aha_b3Ri_DJhc88firHPHg/12/632623851/jpeg/32x32/1/_/1/2/DSCF9125.JPG/EMiZ0eAFGDYgBygH/Shs4Pjg5VDm0tnoCbQUYShCFd9A_sF7RwoOrjT5F3xA?size=1280x960&size_mode=3' ),
-        ( 'Flower Girl Headband', 'Double Rose', 'headband', 'https://photos-6.dropbox.com/t/2/AAAnbmQAuI8lm0dKVMLw5PywLR5AV2QwAGYWfhsG53sY-g/12/632623851/jpeg/32x32/1/_/1/2/DSCF9129.JPG/EMiZ0eAFGDYgBygH/V60MDm2dVDuvblDGLYgHKZ0BBCVOK7IFsEzYT_Sz5K8?size=1280x960&size_mode=3' );
+        ( 'Flower Girl Headband', 'headband', 'ribbon', 'lavender', 'white', 'butterfly', 'pink', '', '', '', 'https://photos-2.dropbox.com/t/2/AADFz574Y9bpZ60sXu-F-xH0Aha_b3Ri_DJhc88firHPHg/12/632623851/jpeg/32x32/1/_/1/2/DSCF9125.JPG/EMiZ0eAFGDYgBygH/Shs4Pjg5VDm0tnoCbQUYShCFd9A_sF7RwoOrjT5F3xA?size=1280x960&size_mode=3', 1, true, true ),
+        ( 'Flower Girl Headband', 'headband', 'ribbon', 'sky blue', 'white', 'rose', 'yellow', '', '', 'Double rose design', 'https://photos-6.dropbox.com/t/2/AAAnbmQAuI8lm0dKVMLw5PywLR5AV2QwAGYWfhsG53sY-g/12/632623851/jpeg/32x32/1/_/1/2/DSCF9129.JPG/EMiZ0eAFGDYgBygH/V60MDm2dVDuvblDGLYgHKZ0BBCVOK7IFsEzYT_Sz5K8?size=1280x960&size_mode=3', 1, true, true );
 
 ------------------------------------------------------------------------- ORDERS TABLE
 

@@ -9,34 +9,40 @@ class Gallery extends Component {
         super();
 
         this.state = {
-            galleryImg: [{}]
+            gallery: []
         }
     }
     
     componentDidMount() {
         window.scrollTo( 0, 0 )
 
-        axios.get( '/api/gallery' ).then( response => {
+        axios.get( '/api/products' ).then( response => {
             console.log( response.data )
             this.setState({
-                galleryImg: response.data.map( e => {
-                    return e.imgurl
+                 gallery: response.data
                 })
             })
-        })
         console.log( this.state.gallery )
     }
 
     render() {
 
-        console.log( this.props.match.path )
         return(
             <div className='gallery-body'>
                 <h1>This is our Gallery!</h1>
                 <p>Here you will find many examples of what can be made, but this is certainly not a finite list. Hop on over to our <Link to='/custom-order'>custom order</Link> page to see the plethora of available options.</p>
 
-                <img src={ this.state.galleryImg[0] } />
-                <img src={ this.state.galleryImg[1] } />
+                { this.state.gallery.map( ( gal, i ) => {
+                    return(
+                        ( gal.imgurl
+                        ? <div key={i} className='img-card'>
+                            <div>{gal.type}</div>
+                            <div>{gal.material}</div>
+                            <img src={gal.imgurl} />
+                        </div>
+                        : null )
+                    )
+                } ) }
                 
             </div>
         )

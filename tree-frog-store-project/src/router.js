@@ -9,6 +9,7 @@ import About from './pages/about/About';
 import Checkout from './pages/checkout/Checkout';
 import Confirmation from './pages/confirmation/Confirmation';
 import Account from './pages/account/Account';
+import Admin from './pages/admin/Admin';
 
 export default (
     <Switch>
@@ -20,5 +21,6 @@ export default (
         <Route path='/checkout' component={ Checkout } />
         <Route path='/confirmation' component={ Confirmation } />
         <Route path='/account' component={ Account } />
+        <Route path='/admin' component={ Admin } />
     </Switch>
 )

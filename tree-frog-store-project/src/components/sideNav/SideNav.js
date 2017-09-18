@@ -45,12 +45,7 @@ class SideNav extends Component {
                 </a> 
                 : <section className='profile-tabs'>
 
-                    <Link to={ { pathname:'/account', query: { id: this.state.userId,
-                                                               currentStreet1: this.state.currentS1,
-                                                               street2: this.state.currentS2,
-                                                               city: this.state.currentCity,
-                                                               state: this.state.currentState,
-                                                               zip: this.state.currentZip } } }
+                    <Link to={ { pathname:'/account', query: { id: this.state.userId } } }
                            className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs' id='account'>Account</div></Link>
 
                     <a href={ process.env.REACT_APP_LOGOUT } className='decor'>
@@ -61,11 +56,19 @@ class SideNav extends Component {
                 
 
                 <Link to='/' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Home</div></Link>
+
                 <Link to='/gallery' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Gallery</div></Link>
+
                 <Link to='/custom-order' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Place an Order</div></Link>
-                <Link to='/cart' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Cart ({`${cartAmount}`})</div></Link>                
+
+                { this.state.userId
+                    ? <Link to='/cart' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Cart ({`${cartAmount}`})</div></Link>
+                    : null
+                }
+
                 <Link to='/about' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>About</div></Link>
-                {this.state.email === 'vpalmergraphics@gmail.com'
+
+                { this.state.email === 'vpalmergraphics@gmail.com'
                     ? <Link to='/admin' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Admin</div></Link>
                     : null
                 }

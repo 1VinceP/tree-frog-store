@@ -17,7 +17,9 @@ class Account extends Component {
             street2: '',
             city: '',
             state: '',
-            zip: null
+            zip: null,
+
+            cart: []
         }
 
         this.submitAddress = this.submitAddress.bind(this)
@@ -37,6 +39,12 @@ class Account extends Component {
             })
         })
         console.log( this.state.currentS1 )
+
+        axios.get( `/api/cart/${this.props.location.query.id}` ).then( response => {
+            this.setState({
+                cart: response.data
+            })
+        } ) 
     }
 
     handleInputChange( e ) {
@@ -50,7 +58,6 @@ class Account extends Component {
     };
 
     submitAddress() {
-        // Not currently necessary to do it this way. This is an example
         console.log( this.props.location.query.id )
         let body = {
             id: this.props.location.query.id,
@@ -104,8 +111,41 @@ class Account extends Component {
                 </div>
 
                 {/* Previous Orders Section Here */}
-                <div className='bg-box'>
-                    <h2>Previous Orders</h2>
+                <div className='orders-box'>
+
+                <h2>Previous Orders (Not Yet Shipped)</h2>
+                    { this.state.cart.map( ( cart, i ) => {
+                        return(
+                            ( cart.paid && !cart.shipped
+                            ? <div key={i} className='account-cart-card'>
+                                <div>{cart.type}</div>
+                                <div>{cart.material}</div>
+                                <div>{cart.baseColor}</div>
+                                <div>{cart.decoration}</div>
+                                <div>{cart.decoColor}</div>
+                                <div>{cart.request}</div>
+                            </div>
+                            : console.log( 'Cannot display cart' ) )
+                        )
+                    } ) }
+                </div>
+
+                <div className='orders-box'>
+                    <h2>Previous Orders (Shipped)</h2>
+                    { this.state.cart.map( ( cart, i ) => {
+                        return(
+                            ( cart.paid && cart.shipped
+                            ? <div key={i} className='account-cart-card'>
+                                <div>{cart.type}</div>
+                                <div>{cart.material}</div>
+                                <div>{cart.baseColor}</div>
+                                <div>{cart.decoration}</div>
+                                <div>{cart.decoColor}</div>
+                                <div>{cart.request}</div>
+                            </div>
+                            : console.log( 'Cannot display cart' ) )
+                        )
+                    } ) }
                 </div>
 
             </div>

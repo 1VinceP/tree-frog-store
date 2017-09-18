@@ -14,14 +14,14 @@ html {
     padding: 0 30px;
 }
 
-.gallery-body img {
+/* .gallery-body img {
     display: block;
     width: 100%;
     max-height: 400px;
     object-fit: cover;
     margin-bottom: 10px;
     border-radius: 20px;
-}
+} */
 
 .gallery-body h1 {
     margin-top: 20px;
@@ -32,4 +32,23 @@ html {
     margin-top: 10px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+.img-card {
+    width: 90%;
+    background: beige;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-card img {
+    display: block;
+    width: 90%;
+    max-height: 400px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 20px;
 }
