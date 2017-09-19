@@ -38,7 +38,7 @@ class Gallery extends Component {
                         ? <div key={i} className='img-card'>
                             <div>{gal.type}</div>
                             <div>{gal.material}</div>
-                            <img src={gal.imgurl} />
+                            <img src={gal.imgurl} alt='' />
                         </div>
                         : null )
                     )

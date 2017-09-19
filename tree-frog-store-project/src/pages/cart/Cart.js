@@ -29,6 +29,15 @@ class Cart extends Component {
             })
         } ) } )
         
+    };
+
+    deleteItem( id ) {
+        axios.delete( `/api/delete/${id}` ).then( () => { axios.get( `/api/cart/${this.state.userId}` ).then( response => {
+            this.setState({
+                cart: response.data
+            })
+        } ) } )
+        console.log( 'deleted' )
     }
 
     render() {
@@ -43,12 +52,13 @@ class Cart extends Component {
                     return(
                         ( !cart.paid
                         ? <div key={i} className='cart-card'>
-                            <div>{cart.type}</div>
-                            <div>{cart.material}</div>
-                            <div>{cart.baseColor}</div>
-                            <div>{cart.decoration}</div>
-                            <div>{cart.decoColor}</div>
-                            <div>{cart.request}</div>
+                            <div><b>Type:</b> {cart.type}</div>
+                            <div><b>Mat:</b> {cart.material}</div>
+                            <div><b>BC:</b> {cart.basecolor}</div>
+                            <div><b>Deco:</b> {cart.decoration}</div>
+                            <div><b>DC:</b> {cart.decocolor}</div>
+                            <div><b>Req:</b> {cart.request}</div>
+                            <button className='close-button' onClick={ () => this.deleteItem( cart.id ) }>&#10006;</button>
                         </div>
                         : console.log( 'Cannot display cart' ) )
                     )

@@ -56,7 +56,7 @@ class CustomOrder extends Component {
         alert('Your item has been added to your cart');
         let body = {
             type: this.state.orderType,
-            material: this.state.orderMaterial,
+            // material: this.state.orderMaterial,
             baseColor: this.state.orderBaseColor,
             secondaryColor: this.state.orderSecondaryColor,
             decoration: this.state.orderDecoration,
@@ -221,8 +221,8 @@ class CustomOrder extends Component {
                 <div className='image-display'>
                     <h3>Product Preview</h3>
                     <p>*This is an example of what your product might look like, but may not be exact due to your specifications and our database*</p>
-                        { this.state.orderType === 'headband' && this.state.orderDecoration === 'butterfly' ? <img src='https://photos-2.dropbox.com/t/2/AADFz574Y9bpZ60sXu-F-xH0Aha_b3Ri_DJhc88firHPHg/12/632623851/jpeg/32x32/1/_/1/2/DSCF9125.JPG/EMiZ0eAFGDYgBygH/Shs4Pjg5VDm0tnoCbQUYShCFd9A_sF7RwoOrjT5F3xA?size=1280x960&size_mode=3' />
-                        : this.state.orderType === 'headband' && this.state.orderDecoration === 'rose' ? <img src="https://photos-6.dropbox.com/t/2/AAAnbmQAuI8lm0dKVMLw5PywLR5AV2QwAGYWfhsG53sY-g/12/632623851/jpeg/32x32/1/_/1/2/DSCF9129.JPG/EMiZ0eAFGDYgBygH/V60MDm2dVDuvblDGLYgHKZ0BBCVOK7IFsEzYT_Sz5K8?size=1280x960&size_mode=3" />
+                        { this.state.orderType === 'headband' && this.state.orderDecoration === 'butterfly' ? <img src='https://photos-2.dropbox.com/t/2/AADFz574Y9bpZ60sXu-F-xH0Aha_b3Ri_DJhc88firHPHg/12/632623851/jpeg/32x32/1/_/1/2/DSCF9125.JPG/EMiZ0eAFGDYgBygH/Shs4Pjg5VDm0tnoCbQUYShCFd9A_sF7RwoOrjT5F3xA?size=1280x960&size_mode=3' alt='' />
+                        : this.state.orderType === 'headband' && this.state.orderDecoration === 'rose' ? <img src="https://photos-6.dropbox.com/t/2/AAAnbmQAuI8lm0dKVMLw5PywLR5AV2QwAGYWfhsG53sY-g/12/632623851/jpeg/32x32/1/_/1/2/DSCF9129.JPG/EMiZ0eAFGDYgBygH/V60MDm2dVDuvblDGLYgHKZ0BBCVOK7IFsEzYT_Sz5K8?size=1280x960&size_mode=3" alt='' />
                         : null }
                 </div>
                 

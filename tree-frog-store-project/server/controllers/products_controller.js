@@ -24,5 +24,14 @@ module.exports = {
         req.app.get('db').get_user_cart( req.params.id )
             .then( response => res.status(200).send(response) )
             // .catch( console.log( chalk.red('Cart failed') ) )
+    },
+
+    delete: ( req, res, next ) => {
+
+        req.app.get('db').delete_item( req.params.id )
+            .then( response => {
+                console.log( 'made it here at least' )
+                res.status(200).send(response)
+            } )
     }
 }

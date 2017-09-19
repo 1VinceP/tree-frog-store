@@ -28,8 +28,14 @@ html {
     background: beige;
     border-radius: 10px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.cart-card div {
     margin-bottom: 10px;
 }
