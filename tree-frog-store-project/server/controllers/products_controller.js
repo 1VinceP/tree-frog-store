@@ -5,7 +5,10 @@ module.exports = {
     retrieveAll: ( req, res, next ) => {
 
         req.app.get('db').get_products()
-            .then( response => res.status(200).send( response ) )
+            .then( response => {
+                // console.log(response)
+                res.status(200).send( response )
+            })
     },
 
     createProduct: ( req, res, next ) => {
@@ -31,6 +34,16 @@ module.exports = {
         req.app.get('db').delete_item( req.params.id )
             .then( response => {
                 console.log( 'made it here at least' )
+                res.status(200).send(response)
+            } )
+    },
+
+    updateShipped: ( req, res, next ) => {
+
+        console.log( req.params )
+
+        req.app.get('db').update_shipped( [req.params.id, req.body.status] )
+            .then( response => {
                 res.status(200).send(response)
             } )
     }

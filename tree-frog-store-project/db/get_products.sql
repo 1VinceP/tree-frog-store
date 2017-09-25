@@ -1,2 +1,3 @@
 SELECT *
-    FROM Products;
+    FROM Products
+        ORDER BY type DESC;

@@ -56,7 +56,7 @@ class CustomOrder extends Component {
         alert('Your item has been added to your cart');
         let body = {
             type: this.state.orderType,
-            // material: this.state.orderMaterial,
+            material: this.state.orderMaterial,
             baseColor: this.state.orderBaseColor,
             secondaryColor: this.state.orderSecondaryColor,
             decoration: this.state.orderDecoration,
@@ -226,11 +226,11 @@ class CustomOrder extends Component {
                         : null }
                 </div>
                 
-                {/* { this.state.user
+                { this.state.user
                     ? <button className='submit-order-button' onClick={ this.submitOrder }>Submit Item to Cart</button>
                     : null
-                } */}
-                <button className='submit-order-button' onClick={ this.submitOrder }>Submit Item to Cart</button>
+                }
+                {/* <button className='submit-order-button' onClick={ this.submitOrder }>Submit Item to Cart</button> */}
                 
                 <button className='clear-button' onClick={ this.resetSelections }>Clear Selections</button>
             </div>

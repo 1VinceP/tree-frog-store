@@ -60,9 +60,9 @@ passport.use( module.exports = new Auth0Strategy({
 console.log( chalk.magenta(process.env.SQLURL) );
 massive( process.env.SQLURL ).then( db => {
         app.set( 'db', db );
-        app.get('db').init.seed().then( res => console.log( res ) )
-    } ).catch( err => {
-        console.log( err );
+    //     app.get('db').init.seed().then( res => console.log( res ) )
+    // } ).catch( err => {
+    //     console.log( err );
 } )
 
 ///////////////////////////////////////////////////////////////// AUTHENTICATION
@@ -98,7 +98,13 @@ app.get( '/api/getaddress', session_controller.getAddress )
 ///////////////////////////////////////////////////////////////// END AUTHENTICATION
 
 ///////////////////////////////////////////////////////////////// DATABASE CALLS
-// GET ALL FOR THE GALLERY
+// GET ALL USERS
+app.get( '/api/all_users', (req, res, next ) => {
+    req.app.get('db').get_all_users()
+        .then( response => res.status(200).send(response) )
+} )
+
+// GET ALL PRODUCTS
 app.get( '/api/products', products_controller.retrieveAll )
 // ADD NEW PRODUCT
 app.post( '/api/createProd', products_controller.createProduct )
@@ -106,6 +112,8 @@ app.post( '/api/createProd', products_controller.createProduct )
 app.get( '/api/cart/:id', products_controller.getCart )
 // DELETE FROM CART/DB
 app.delete( '/api/delete/:id', products_controller.delete )
+// UPDATE SHIPPED STATUS
+app.put( '/api/update_shipped/:id', products_controller.updateShipped )
 
 ///////////////////////////////////////////////////////////////// END DATABASE CALLS
 

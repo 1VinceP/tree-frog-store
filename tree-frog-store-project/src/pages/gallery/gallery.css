@@ -42,6 +42,14 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.img-card div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img-card img {
@@ -49,6 +57,6 @@ html {
     width: 90%;
     max-height: 400px;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-top: 10px;
     border-radius: 20px;
 }

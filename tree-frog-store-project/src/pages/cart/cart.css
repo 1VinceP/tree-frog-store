@@ -36,6 +36,43 @@ html {
     padding: 10px;
 }
 
-.cart-card div {
-    margin-bottom: 10px;
+.cart-product-card {
+    width: 240px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-top: 10px;
+    padding: 10px 10px 0 10px;
+}
+
+    .cart-product-card div {
+        margin-bottom: 5px;
+    }
+
+.cart-order-header {
+    width: calc(100% + 22px );
+    margin-top: -10px;
+    padding: 5px;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 10px 10px 0 0;
+}
+
+.delete-button {
+    width: 25px;
+    height: 25px;
+    background: rgba( 128, 128, 128, .3 );
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
 }

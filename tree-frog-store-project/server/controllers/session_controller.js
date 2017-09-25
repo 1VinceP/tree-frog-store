@@ -25,8 +25,18 @@ module.exports = {
     },
 
     getAddress: ( req, res, next ) => {
-        req.app.get('db').get_address( req.user.id ).then( (response) => {
-            res.status(200).send(response)
-        })
+
+        if( req.user ) {
+            req.app.get('db').get_address( req.user.id ).then( (response) => {
+                res.status(200).send(response)
+            })
+        }
+        
     }
+
+    // getAllUsers: ( req, res, next ) => {
+
+    //     req.app.get('db').all_users()
+    //         .then( response => res.status(200).send(response) )
+    // }
 }
