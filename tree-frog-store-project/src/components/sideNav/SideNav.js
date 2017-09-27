@@ -27,11 +27,12 @@ class SideNav extends Component {
             }
             console.log( 'user:', this.state.username )
         })
+
+
     }
 
     render() {
 
-        let cartAmount = 0
         console.log( 'navIsOpen:', this.props.displayMenu )
         return(
             <div className={ 'mobile-menu-container ' + (this.props.displayMenu ? 'show' : null) }>
@@ -51,7 +52,8 @@ class SideNav extends Component {
                     <a href={ process.env.REACT_APP_LOGOUT } className='decor'>
                         <div className='nav-tabs' id='logout'>Log Out</div>
                     </a>
-                </section> }
+                </section>
+                }
                 
                 
 
@@ -62,7 +64,7 @@ class SideNav extends Component {
                 <Link to='/custom-order' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Place an Order</div></Link>
 
                 { this.state.userId
-                    ? <Link to='/cart' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Cart ({`${cartAmount}`})</div></Link>
+                    ? <Link to='/cart' className='link' onClick={ () => this.props.toggleMenu() }><div className='nav-tabs'>Cart</div></Link>
                     : null
                 }
 

@@ -6,6 +6,7 @@ html {
 }
 
 .order-body {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,9 +30,9 @@ html {
 
 .order-div {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-around; */
     margin-top: 40px;
 }  
 
@@ -61,6 +62,16 @@ html {
 
 .order-header:hover {
     height: 500px;
+}
+
+.order-center {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.order-hero {
+    display: none;
 }
 
 .form-content {
@@ -96,7 +107,6 @@ html {
 
 .submit-order-button {
     margin-top: 10px;
-    /* margin-bottom: 30px; */
     height: 35px;
     width: 75%;
     border: none;
@@ -116,4 +126,84 @@ html {
     background: #DC5A5A;
     font-size: 20px;
     letter-spacing: .75px;
+}
+
+@media (min-width: 750px) {
+    .order-body {
+        margin-top: 30px;
+    }
+
+    .order-header {
+        width: 80%;
+        height: 80px;
+    }
+
+    .order-hero-one {
+        display: flex;
+        height: 305px;
+        width: 30%;
+        background-image: url('../../images/orderHero1.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 10px;
+        align-self: center;
+    }
+    
+    .order-hero-two {
+        display: flex;
+        height: 305px;
+        width: 30%;
+        background-image: url('../../images/orderHero2.jpeg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 10px;
+        align-self: center;
+    }
+
+    .image-display {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .order-body {
+        margin-top: 0;
+    }
+
+    .order-header {
+        width: 60%;
+    }
+
+    .order-hero-one {
+        height: 533px;
+        width: 400px;
+    }
+
+    .form-content {
+        align-self: center;
+    }
+
+    .order-hero-two {
+        height: 533px;
+        width: 400px;
+    }
+
+    .image-display {
+        width: 60%;
+    }
+
+    .image-display img {
+        width: 60%;
+        height: 340px;
+    }
+
+    .submit-order-button {
+        height: 45px;
+        width: 40%;
+    }
+
+    .clear-button {
+        height: 45px;
+        width: 40%;
+    }
 }

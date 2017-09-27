@@ -12,9 +12,9 @@ module.exports = {
     },
 
     createProduct: ( req, res, next ) => {
-        const { type, material, baseColor, secondaryColor, decoration, decoColor, centerBase, centerCandle, request, creatorId, paid, shipped } = req.body
+        const { type, material, baseColor, secondaryColor, decoration, decoColor, centerBase, centerCandle, request, creatorId, paid, shipped, quantity } = req.body
 
-        req.app.get('db').create_product( [type, material, baseColor, secondaryColor, decoration, decoColor, centerBase, centerCandle, request, creatorId, paid, shipped] )
+        req.app.get('db').create_product( [type, material, baseColor, secondaryColor, decoration, decoColor, centerBase, centerCandle, request, creatorId, paid, shipped, quantity] )
             .then( response => {
                 console.log( chalk.yellow('New product added') )
                 res.status(200).send(response)
@@ -43,6 +43,22 @@ module.exports = {
         console.log( req.params )
 
         req.app.get('db').update_shipped( [req.params.id, req.body.status] )
+            .then( response => {
+                res.status(200).send(response)
+            } )
+    },
+
+    updatePaid: ( req, res, next ) => {
+        
+        req.app.get('db').update_paid( req.params.id )
+            .then( response => {
+                res.status(200).send(response)
+            })
+    },
+
+    updateQuantity: ( req, res, next ) => {
+
+        req.app.get('db').update_quantity( [req.params.id, req.body.amount] )
             .then( response => {
                 res.status(200).send(response)
             } )

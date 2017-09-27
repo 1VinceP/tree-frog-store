@@ -27,6 +27,36 @@ class Gallery extends Component {
 
     render() {
 
+        var headbandMap = this.state.gallery.map( ( gal, i ) => {
+            return(
+                    ( gal.imgurl && gal.type === 'headband'
+                    ? <div key={i}>
+                        <img src={gal.imgurl} alt='' />
+                    </div>
+                    : null )
+            )
+        } );
+
+        var flowerMap = this.state.gallery.map( ( gal, i ) => {
+            return(
+                    ( gal.imgurl && gal.type === 'flower'
+                    ? <div key={i}>
+                        <img src={gal.imgurl} alt='' />
+                    </div>
+                    : null )
+            )
+        } );
+
+        var centerpieceMap = this.state.gallery.map( ( gal, i ) => {
+            return(
+                    ( gal.imgurl && gal.type === 'centerpiece'
+                    ? <div key={i}>
+                        <img src={gal.imgurl} alt='' />
+                    </div>
+                    : null )
+            )
+        } );
+
         return(
             <div className='gallery-body'>
                 <h1>This is our Gallery!</h1>
@@ -34,41 +64,23 @@ class Gallery extends Component {
 
                 <div className='img-card'>
                     <h2>Headbands</h2>
-                    { this.state.gallery.map( ( gal, i ) => {
-                        return(
-                                ( gal.imgurl && gal.type === 'headband'
-                                ? <div key={i}>
-                                    <img src={gal.imgurl} alt='' />
-                                </div>
-                                : null )
-                        )
-                    } ) }
+                    <section className='img-section'>
+                        { headbandMap }
+                    </section>
                 </div>
 
                 <div className='img-card'>
                     <h2>Flowers</h2>
-                    { this.state.gallery.map( ( gal, i ) => {
-                        return(
-                                ( gal.imgurl && gal.type === 'flower'
-                                ? <div key={i}>
-                                    <img src={gal.imgurl} alt='' />
-                                </div>
-                                : null )
-                        )
-                    } ) }
+                    <section className='img-section'>
+                        { flowerMap }
+                    </section>
                 </div>
 
                 <div className='img-card'>
                     <h2>Centerpieces</h2>
-                    { this.state.gallery.map( ( gal, i ) => {
-                        return(
-                                ( gal.imgurl && gal.type === 'centerpiece'
-                                ? <div key={i}>
-                                    <img src={gal.imgurl} alt='' />
-                                </div>
-                                : null )
-                        )
-                    } ) }
+                    <section className='img-section'>
+                        { centerpieceMap }
+                    </section>
                 </div>
                 
             </div>

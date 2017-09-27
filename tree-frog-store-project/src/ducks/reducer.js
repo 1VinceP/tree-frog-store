@@ -9,7 +9,9 @@ const initialState = {
     orderDecoColor: '',
     orderRequest: '',
 
-    user: false
+    user: false,
+
+    cartAmount: 0
 }
 
 const UPDATE_ORDER_TYPE = 'UPDATE_ORDER_TYPE'
@@ -21,6 +23,9 @@ const UPDATE_ORDER_DECO_COLOR = 'UPDATE_ORDER_DECO_COLOR'
 const UPDATE_ORDER_REQUEST = 'UPDATE_ORDER_REQUEST'
 
 const GET_USER = 'GET_USER'
+
+const CART_MORE = 'CART_MORE'
+const CART_LESS = 'CART_LESS'
 
 export function getOrderType( orderType ) {
     return {
@@ -78,6 +83,20 @@ export function getUser() {
     }
 };
 
+export function addToCart( amount ) {
+    return {
+        type: CART_MORE,
+        payload: amount
+    }
+};
+
+export function takeFromCart( amount ) {
+    return {
+        type: CART_LESS,
+        payload: amount
+    }
+}
+
 function reducer( state = initialState, action ) {
     switch( action.type ) {
         case UPDATE_ORDER_TYPE:
@@ -92,10 +111,19 @@ function reducer( state = initialState, action ) {
             return Object.assign( {}, state, { orderDecoColor: action.payload });
         case UPDATE_ORDER_REQUEST:
             return Object.assign( {}, state, { orderRequest: action.payload });
-
         case GET_USER:
             return Object.assign( {}, state, { user: action.payload } )
-
+        // case CART_MORE:
+        //     let startingValue = state.cartAmount
+        //     let nextValue = action.payload
+        //     let val = startingValue + nextValue
+        //     return Object.assign( {}, state, { cartAmount: val } );
+        // case CART_LESS:
+        //     let startingValue = state.cartAmount
+        //     let nextValue = action.payload
+        //     let val = startingValue - nextValue
+        //     return Object.assign( {}, state, { cartAmount: val } )
+            
         default: return state;
     }
 }

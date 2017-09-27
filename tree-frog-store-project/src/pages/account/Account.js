@@ -85,6 +85,56 @@ class Account extends Component {
 
     render() {
 
+        var ordersNotShipped = this.state.cart.map( ( cart, i ) => {
+            return(
+                ( cart.paid && !cart.shipped
+                ? <div key={i} className={ 'admin-product-card ' + ( cart.type === 'headband' ? 'pink-border' : cart.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
+                    <div className={ 'admin-order-header ' + ( cart.type === 'headband' ? 'pink-header' : cart.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{cart.type.toUpperCase()}</b></div>
+                    <div><b>Material</b>: {cart.material}</div>
+                    <div><b>Base</b>: {cart.basecolor}</div>
+                    <div><b>Secondary</b>: {cart.secondarycolor}</div>
+                    <div><b>Decoration</b>: {cart.decoration}</div>
+                    <div><b>Deco Color</b>: {cart.decocolor}</div>
+                    { cart.type === 'centerpiece' ?
+                        <div><b>Candle</b>: {cart.centercandle}</div>
+                        : null
+                    }
+                    { cart.type === 'centerpiece' ?
+                        <div><b>Center Base</b>: {cart.centerbase}</div>
+                        : null
+                    }
+                    <div><b>Request</b>: {cart.request}</div>
+                    <div><b>Quantity</b>: {cart.quantity}</div>
+                </div>
+                : console.log( 'Cannot display cart' ) )
+            )
+        } );
+
+        var ordersShipped = this.state.cart.map( ( cart, i ) => {
+            return(
+                ( cart.paid && cart.shipped
+                ? <div key={i} className={ 'admin-product-card ' + ( cart.type === 'headband' ? 'pink-border' : cart.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
+                    <div className={ 'admin-order-header ' + ( cart.type === 'headband' ? 'pink-header' : cart.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{cart.type.toUpperCase()}</b></div>
+                    <div><b>Material</b>: {cart.material}</div>
+                    <div><b>Base</b>: {cart.basecolor}</div>
+                    <div><b>Secondary</b>: {cart.secondarycolor}</div>
+                    <div><b>Decoration</b>: {cart.decoration}</div>
+                    <div><b>Deco Color</b>: {cart.decocolor}</div>
+                    { cart.type === 'centerpiece' ?
+                        <div><b>Candle</b>: {cart.centercandle}</div>
+                        : null
+                    }
+                    { cart.type === 'centerpiece' ?
+                        <div><b>Center Base</b>: {cart.centerbase}</div>
+                        : null
+                    }
+                    <div><b>Request</b>: {cart.request}</div>
+                    <div><b>Quantity</b>: {cart.quantity}</div>
+                </div>
+                : console.log( 'Cannot display cart' ) )
+            )
+        } )
+
         return(
             <div className='account-body'>
                 <div className='bg-box'>
@@ -93,7 +143,7 @@ class Account extends Component {
                 </div>
 
                 {/* Address Section Here */}
-                <div className='bg-box'>
+                <div className='bg-box' id='large'>
                     <h2>Shipping Address</h2>
                     <br/>
                     <p className='where'>Street 1*</p>
@@ -112,40 +162,19 @@ class Account extends Component {
 
                 {/* Previous Orders Section Here */}
                 <div className='orders-box'>
-
-                <h2>Previous Orders (Not Yet Shipped)</h2>
-                    { this.state.cart.map( ( cart, i ) => {
-                        return(
-                            ( cart.paid && !cart.shipped
-                            ? <div key={i} className='account-cart-card'>
-                                <div>{cart.type}</div>
-                                <div>{cart.material}</div>
-                                <div>{cart.baseColor}</div>
-                                <div>{cart.decoration}</div>
-                                <div>{cart.decoColor}</div>
-                                <div>{cart.request}</div>
-                            </div>
-                            : console.log( 'Cannot display cart' ) )
-                        )
-                    } ) }
+                    <h2>Previous Orders (Not Yet Shipped)</h2>
+                    <section className='previous-section'>
+                        { ordersNotShipped }
+                    </section>
+                    
                 </div>
 
                 <div className='orders-box'>
                     <h2>Previous Orders (Shipped)</h2>
-                    { this.state.cart.map( ( cart, i ) => {
-                        return(
-                            ( cart.paid && cart.shipped
-                            ? <div key={i} className='account-cart-card'>
-                                <div>{cart.type}</div>
-                                <div>{cart.material}</div>
-                                <div>{cart.baseColor}</div>
-                                <div>{cart.decoration}</div>
-                                <div>{cart.decoColor}</div>
-                                <div>{cart.request}</div>
-                            </div>
-                            : console.log( 'Cannot display cart' ) )
-                        )
-                    } ) }
+                    <section className='previous-section'>
+                        { ordersShipped }
+                    </section>
+                    
                 </div>
 
             </div>

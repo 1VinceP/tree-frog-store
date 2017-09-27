@@ -13,10 +13,9 @@ html {
     justify-content: center;
     align-items: center;
     background-image: url('../../images/aboutHero.JPG');
-    /* background-attachment: fixed; */
-    /* background-position: top; */
     background-repeat: no-repeat;
     background-size: 100%;
+    border-radius: 0 0 10px 10px;
 }
 
 .body {
@@ -25,15 +24,11 @@ html {
     align-items: center;
 }
 
-.about-info {
-    width: 90%;
-    background: beige; 
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: -20px;
-    font-size: 22px;
-    text-align: center;
-    font-family: cursive;
-    line-height: 110%;
-    margin-top: 10px;
-  }
+@media (min-width: 750px) {
+    .about-hero {
+        width: 90%;
+        padding-top: 42%;
+        border-radius: 0 0 10px 10px;
+        margin-top: 30px;
+    }
+}

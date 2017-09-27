@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { TweenMax, Power2, TimelineLite } from 'gsap';
+import axios from 'axios';
 import './styles/reset.css';
 import './styles/App.css';
 
@@ -17,6 +17,21 @@ class App extends Component {
     }
 
     this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  componentDidMount() {
+
+    // axios.get( '/api/user' ).then( user => {
+    //     if( user.data.username !== undefined ) {
+    //         this.setState({
+    //             username: ' ' + user.data.username,
+    //             userId: user.data.id,
+    //             email: user.data.email
+    //         })
+    //     }
+    //     console.log( 'user:', this.state.username )
+    // })
+
   }
 
   toggleMenu() {

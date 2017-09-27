@@ -1,4 +1,4 @@
 UPDATE Products
     SET paid = true
-        WHERE id = $1
+        WHERE creatorid = $1
             RETURNING *;

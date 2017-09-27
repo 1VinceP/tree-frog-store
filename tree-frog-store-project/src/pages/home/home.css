@@ -7,7 +7,6 @@ html {
 
 .home-front {
   width: 100%;
-  /* height: 120vh; */
   background: white;
   display: flex;
   flex-direction: column;
@@ -23,6 +22,7 @@ html {
     background-image: url('../../images/hero.JPG');
     background-repeat: no-repeat;
     background-size: 100%;
+    border-radius: 0 0 10px 10px;
 }
 
 .home-info {
@@ -37,6 +37,10 @@ html {
   margin-top: 10px;
 }
 
+.large-home {
+  display: none;
+}
+
 .home-body {
   width: 90%;
   background: beige; 
@@ -45,14 +49,78 @@ html {
   margin-top: -20px;
   font-size: 18px;
   text-align: center;
-  /* font-family: cursive; */
   line-height: 120%;
   margin-top: 10px;
 }
 
+.home-body p {
+  text-align: left;
+}
+
+@media (min-width: 750px) {
+  .hero {
+    width: 90%;
+    padding-top: 42%;
+    border-radius: 0 0 10px 10px;
+    margin-top: 30px;
+  }
+
+  .home-info {
+    width: 80%;
+    font-size: 30px;
+  }
+
+  .home-body {
+    width: 80%;
+    font-size: 24px;
+  }
+}
+
 @media (min-width: 1000px) {
+  .home-front {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around
+  }
+
   .hero {
     width: 100%;
-    padding-top: 25%;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .home-info {
+    margin-top: -280px;
+    background: rgba(245, 245, 220, 0.6);
+  }
+
+  .large-home {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .home-body {
+    width: 60%;
+    align-self: center;
+    padding: 30px 60px;
+    font-size: 20px;
+  }
+
+  .home-login {
+    width: 30%;
+    height: 40%;
+    align-self: center;
+    background: beige;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+  }
+
+  .home-about-body {
+    background: none;
+  }
+
+  #small {
+    display: none;
   }
 }

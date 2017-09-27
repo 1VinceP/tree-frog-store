@@ -70,6 +70,98 @@ class Admin extends Component {
 
     render() {
 
+        var notShippedMap = this.state.products.map( ( products, i ) => {
+            return(
+                <div key={i}>
+                    { this.state.notShipped && products.paid && !products.shipped
+                    ? <div key={i} className={ 'admin-product-card ' + ( products.type === 'headband' ? 'pink-border' : products.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
+                        <div className={ 'admin-order-header ' + ( products.type === 'headband' ? 'pink-header' : products.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{products.type.toUpperCase()}</b></div>
+                        <div><b>Material</b>: {products.material}</div>
+                        <div><b>Base</b>: {products.basecolor}</div>
+                        <div><b>Secondary</b>: {products.secondarycolor}</div>
+                        <div><b>Decoration</b>: {products.decoration}</div>
+                        <div><b>Deco Color</b>: {products.decocolor}</div>
+                        { products.type === 'centerpiece' ?
+                            <div><b>Candle</b>: {products.centercandle}</div>
+                            : null
+                        }
+                        { products.type === 'centerpiece' ?
+                            <div><b>Center Base</b>: {products.centerbase}</div>
+                            : null
+                        }
+                        <div><b>Request</b>: {products.request}</div>
+                        <div><b>Quantity</b>: {products.quantity}</div>
+                        <button className='shipped-button' onClick={ () => this.markItemShipped( products.id, true ) } ><b>Shipped!</b></button>
+                        <div>
+                            { this.state.users.map( ( user, i ) => {
+                                {/* user.id === products.creatorid */}
+                                return (
+                                    <div key={i}>
+                                        { user.id === products.creatorid
+                                            ? <div className='admin-show-address'>
+                                                <div><u>{user.username}</u></div>
+                                                <div>{user.email}</div>
+                                                <div>{user.street1}</div>
+                                                { user.street2 ? <div>{user.street2}</div> : null }
+                                                <div>{user.city}, {user.state} {user.zip}</div>
+                                            </div>
+                                            : null }
+                                    </div>
+                                )
+                            } ) }
+                        </div>
+                    </div>
+                    : null }
+                </div>
+            )
+        } );
+
+        var shippedMap = this.state.products.map( ( products, i ) => {
+            return(
+                <div key={i}>
+                    { this.state.shipped && products.paid && products.shipped
+                    ? <div key={i} className={ 'admin-product-card ' + ( products.type === 'headband' ? 'pink-border' : products.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
+                    <div className={ 'admin-order-header ' + ( products.type === 'headband' ? 'pink-header' : products.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{products.type.toUpperCase()}</b></div>
+                        <div><b>Material</b>: {products.material}</div>
+                        <div><b>Base</b>: {products.basecolor}</div>
+                        <div><b>Secondary</b>: {products.secondarycolor}</div>
+                        <div><b>Decoration</b>: {products.decoration}</div>
+                        <div><b>Deco Color</b>: {products.decocolor}</div>
+                        { products.type === 'centerpiece' ?
+                            <div><b>Candle</b>: {products.centercandle}</div>
+                            : null
+                        }
+                        { products.type === 'centerpiece' ?
+                            <div><b>Center Base</b>: {products.centerbase}</div>
+                            : null
+                        }
+                        <div><b>Request</b>: {products.request}</div>
+                        <div><b>Quantity</b>: {products.quantity}</div>
+                        <button className='unship-button' onClick={ () => this.markItemShipped( products.id, false ) } ><b>JK, not shipped</b></button>
+                        <div>
+                        { this.state.users.map( ( user, i ) => {
+                            {/* user.id === products.creatorid */}
+                            return (
+                                <div key={i}>
+                                    { user.id === products.creatorid
+                                        ? <div className='admin-show-address'>
+                                            <div><u>{user.username}</u></div>
+                                            <div>{user.email}</div>
+                                            <div>{user.street1}</div>
+                                            { user.street2 ? <div>{user.street2}</div> : null }
+                                            <div>{user.city}, {user.state} {user.zip}</div>
+                                        </div>
+                                        : null }
+                                </div>
+                            )
+                        } ) }
+                    </div>
+                    </div>
+                    : null }
+                </div>
+            )
+        } );
+
         console.log( this.state.users )
         return(
             <div className='admin-body'>
@@ -99,41 +191,9 @@ class Admin extends Component {
                 <div className='orders-box'>
                     <h2>Not Shipped</h2>
                     <br/>
-                    { this.state.products.map( ( products, i ) => {
-                        return(
-                            <div key={i}>
-                                { this.state.notShipped && products.paid && !products.shipped
-                                ? <div key={i} className={ 'admin-product-card ' + ( products.type === 'headband' ? 'pink-border' : products.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
-                                    <div className={ 'admin-order-header ' + ( products.type === 'headband' ? 'pink-header' : products.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{products.type.toUpperCase()}</b></div>
-                                    <div><b>Material</b>: {products.material}</div>
-                                    <div><b>Base</b>: {products.basecolor}</div>
-                                    <div><b>Decoration</b>: {products.decoration}</div>
-                                    <div><b>DecoColor</b>: {products.decocolor}</div>
-                                    <div><b>Request</b>: {products.request}</div>
-                                    <button className='shipped-button' onClick={ () => this.markItemShipped( products.id, true ) } ><b>Shipped!</b></button>
-                                    <div>
-                                        { this.state.users.map( ( user, i ) => {
-                                            {/* user.id === products.creatorid */}
-                                            return (
-                                                <div key={i}>
-                                                    { user.id === products.creatorid
-                                                        ? <div className='admin-show-address'>
-                                                            <div><u>{user.username}</u></div>
-                                                            <div>{user.email}</div>
-                                                            <div>{user.street1}</div>
-                                                            { user.street2 ? <div>{user.street2}</div> : null }
-                                                            <div>{user.city}, {user.state} {user.zip}</div>
-                                                        </div>
-                                                        : null }
-                                                </div>
-                                            )
-                                        } ) }
-                                    </div>
-                                </div>
-                                : null }
-                            </div>
-                        )
-                    } ) }
+                    <section className='previous-section'>
+                        { notShippedMap }
+                    </section>
                 </div>
                 : null }
 
@@ -141,41 +201,9 @@ class Admin extends Component {
                     <div className='orders-box'>
                         <h2>Shipped</h2>
                         <br/>
-                        { this.state.products.map( ( products, i ) => {
-                            return(
-                                <div key={i}>
-                                    { this.state.shipped && products.paid && products.shipped
-                                    ? <div key={i} className={ 'admin-product-card ' + ( products.type === 'headband' ? 'pink-border' : products.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
-                                    <div className={ 'admin-order-header ' + ( products.type === 'headband' ? 'pink-header' : products.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{products.type.toUpperCase()}</b></div>
-                                        <div><b>Material</b>: {products.material}</div>
-                                        <div><b>Base</b>: {products.basecolor}</div>
-                                        <div><b>Decoration</b>: {products.decoration}</div>
-                                        <div><b>DecoColor</b>: {products.decocolor}</div>
-                                        <div><b>Request</b>: {products.request}</div>
-                                        <button className='unship-button' onClick={ () => this.markItemShipped( products.id, false ) } ><b>JK, not shipped</b></button>
-                                        <div>
-                                        { this.state.users.map( ( user, i ) => {
-                                            {/* user.id === products.creatorid */}
-                                            return (
-                                                <div key={i}>
-                                                    { user.id === products.creatorid
-                                                        ? <div className='admin-show-address'>
-                                                            <div><u>{user.username}</u></div>
-                                                            <div>{user.email}</div>
-                                                            <div>{user.street1}</div>
-                                                            { user.street2 ? <div>{user.street2}</div> : null }
-                                                            <div>{user.city}, {user.state} {user.zip}</div>
-                                                        </div>
-                                                        : null }
-                                                </div>
-                                            )
-                                        } ) }
-                                    </div>
-                                    </div>
-                                    : null }
-                                </div>
-                            )
-                        } ) }
+                        <section className='previous-section'>
+                            { shippedMap }
+                        </section>
                     </div>
                 : null }
                 

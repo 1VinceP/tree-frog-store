@@ -114,6 +114,10 @@ app.get( '/api/cart/:id', products_controller.getCart )
 app.delete( '/api/delete/:id', products_controller.delete )
 // UPDATE SHIPPED STATUS
 app.put( '/api/update_shipped/:id', products_controller.updateShipped )
+// UPDATE PAID
+app.put( '/api/update_paid/:id', products_controller.updatePaid )
+// UPDATE QUANTITY
+app.put( '/api/update_quantity/:id', products_controller.updateQuantity )
 
 ///////////////////////////////////////////////////////////////// END DATABASE CALLS
 

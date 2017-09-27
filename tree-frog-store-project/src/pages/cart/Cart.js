@@ -9,6 +9,7 @@ class Cart extends Component {
 
         this.state = {
             cart: [],
+            cartAmount: 0,
             userId: 0
         }
     }
@@ -23,12 +24,30 @@ class Cart extends Component {
                 })
             }
             console.log( 'userId:', this.state.userId )
-        }).then( () => { axios.get( `/api/cart/${this.state.userId}` ).then( response => {
-            this.setState({
-                cart: response.data
-            })
+        }).then( () => { axios.get( `/api/cart/${this.state.userId}` )
+            .then( response => {
+                this.setState({
+                    cart: response.data
+                })
+                console.log( response )
+                this.countCart( response.data )
         } ) } )
         
+    };
+
+    countCart( cart ) {
+        let amount = 0
+
+        for( var i = 0; i < cart.length; i++ ) {
+            if( !cart[i].paid )
+                amount += cart[i].quantity
+        }
+
+        this.setState({
+            cartAmount: amount
+        })
+
+        console.log( 'amount on state:', this.state.cartAmount )
     };
 
     deleteItem( id ) {
@@ -37,37 +56,54 @@ class Cart extends Component {
                 this.setState({
                     cart: response.data
                 })
-        } ) } )
+                this.countCart( response.data )
+            } ) } )
         console.log( 'deleted' )
-    }
+    };
 
     render() {
 
-        console.log( this.state.cart )
+        var cartMap = this.state.cart.map( ( cart, i ) => {
+            return(
+                ( !cart.paid
+                ? <div key={i} className={'cart-product-card ' + ( cart.type === 'headband' ? 'pink-border' : cart.type === 'flower' ? 'yellow-border' : 'blue-border' ) } >
+                    <div className={'cart-order-header ' + ( cart.type === 'headband' ? 'pink-header' : cart.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{cart.type.toUpperCase()}</b></div>
+                    <div><b>Mat:</b> {cart.material}</div>
+                    <div><b>BC:</b> {cart.basecolor}</div>
+                    <div><b>Deco:</b> {cart.decoration}</div>
+                    <div><b>DC:</b> {cart.decocolor}</div>
+                    <div><b>Req:</b> {cart.request}</div>
+                    <div><b>Quantity:</b> {cart.quantity}</div>
+                    <button className='delete-button' onClick={ () => this.deleteItem( cart.id ) }>&#10006;</button>
+                </div>
+                : console.log( 'Cannot display cart' ) )
+            )
+        } )
+
+        console.log( 'cart:', this.state.cart )
+        console.log( 'cartMap:', cartMap )
         return(
             <div className='cart-body'>
                 <br/><br/>
 
-                <div className='cart-card'>
-                    <h2>Cart</h2>
-                    { this.state.cart.map( ( cart, i ) => {
-                        return(
-                            ( !cart.paid
-                            ? <div key={i} className={'cart-product-card ' + ( cart.type === 'headband' ? 'pink-border' : cart.type === 'flower' ? 'yellow-border' : 'blue-border' ) } >
-                                <div className={'cart-order-header ' + ( cart.type === 'headband' ? 'pink-header' : cart.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{cart.type.toUpperCase()}</b></div>
-                                <div><b>Mat:</b> {cart.material}</div>
-                                <div><b>BC:</b> {cart.basecolor}</div>
-                                <div><b>Deco:</b> {cart.decoration}</div>
-                                <div><b>DC:</b> {cart.decocolor}</div>
-                                <div><b>Req:</b> {cart.request}</div>
-                                <button className='delete-button' onClick={ () => this.deleteItem( cart.id ) }>&#10006;</button>
-                            </div>
-                            : console.log( 'Cannot display cart' ) )
-                        )
-                    } ) }
+                <h1>This is Your Cart</h1>
+
+                { cartMap.length > 0 ?
+                    <div className='cart-card'>
+                        { cartMap }
+                    </div>
+                : null
+                }
+
+                <div className='cart-total-card'>
+                    <h2 className='cart-total-style'>
+                        Total: ${ this.state.cartAmount < 15 ? this.state.cartAmount * 12
+                        : this.state.cartAmount * 9 }.00</h2>
                 </div>
 
-                <Link to='/checkout'><button className='checkout-button'>Checkout</button></Link>
+                <Link to={ { pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } } }>
+                    <button className='checkout-button'>Checkout</button>
+                </Link>
             </div>
         )
     }

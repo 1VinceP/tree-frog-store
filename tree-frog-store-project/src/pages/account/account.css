@@ -76,13 +76,48 @@ html {
     font-size: 18px;
 }
 
-.account-cart-card {
-    width: 90%;
-    background: white;
-    border-radius: 10px;
+.previous-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+}
+
+@media (min-width: 750px) {
+    .account-body {
+        margin-top: 30px;
+    }
+
+    .where {
+        margin-left: 30px;
+    }
+
+    .bg-box input {
+        height: 35px;
+    }
+
+    .change-button {
+        width: 60%;
+        height: 45px;
+    }
+
+    .previous-section {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #large {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .account-body {
+        margin-top: 0;
+    }
+
+    .where {
+        margin-left: 50px;
+    }
 }

@@ -18,10 +18,9 @@ class About extends Component {
     render() {
         return(
             <div>
-                {/* <div className='buffer'></div> */}
-                <div className='about-hero'/>
                 <div className='body'>
-                    <div className='about-info'>{ aboutBody() }</div>
+                    <div className='about-hero'/>
+                    <div>{ aboutBody() }</div>
                 </div>
             </div>
         )
