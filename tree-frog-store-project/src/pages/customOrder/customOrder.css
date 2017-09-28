@@ -80,6 +80,12 @@ html {
     font-size: 18px;
 }
 
+.no-content {
+    font-size: 14px;
+    width: 185px;
+    text-align: center;
+}
+
 .character-limit {
     margin-top: 2px;
     font-size: 14px;
