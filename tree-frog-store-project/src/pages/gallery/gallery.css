@@ -57,6 +57,24 @@ html {
     flex-direction: column;
 }
 
+#fade-in-img {
+    animation: fadeinImg 1s;
+}
+
+@keyframes fadeinImg {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#fade-in-block {
+    animation: fadeinBlock 2s;
+}
+
+@keyframes fadeinBlock {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @media (min-width: 750px) {
     .gallery-body {
         margin-top: 30px;

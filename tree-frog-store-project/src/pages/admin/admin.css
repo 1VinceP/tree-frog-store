@@ -118,6 +118,28 @@ html {
     margin-top: 10px;
 }
 
+.random-starwars {
+    width: 90%;
+    background: beige;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.starwars-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 35px;
+    width: 75%;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    letter-spacing: .75px;
+    background: rgb(38, 38, 126);
+    color: beige;
+}
+
 @media (min-width: 750px) {
     .filter-box {
         margin-top: 30px;
@@ -131,5 +153,9 @@ html {
 @media (min-width: 1000px) {
     .filter-box {
         margin-top: 0;
+    }
+
+    .random-starwars {
+        width: 40%;
     }
 }

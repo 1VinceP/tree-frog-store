@@ -38,7 +38,7 @@ class Account extends Component {
                 currentZip: response.data[0].zip
             })
         })
-        console.log( this.state.currentS1 )
+        // console.log( this.state.currentS1 )
 
         axios.get( `/api/cart/${this.props.location.query.id}` ).then( response => {
             this.setState({
@@ -54,7 +54,7 @@ class Account extends Component {
         this.setState({
             [name]: value
         })
-        console.log( this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zip )
+        // console.log( this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zip )
     };
 
     submitAddress() {
@@ -90,19 +90,18 @@ class Account extends Component {
                 ( cart.paid && !cart.shipped
                 ? <div key={i} className={ 'admin-product-card ' + ( cart.type === 'headband' ? 'pink-border' : cart.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
                     <div className={ 'admin-order-header ' + ( cart.type === 'headband' ? 'pink-header' : cart.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{cart.type.toUpperCase()}</b></div>
-                    <div><b>Material</b>: {cart.material}</div>
-                    <div><b>Base</b>: {cart.basecolor}</div>
-                    <div><b>Secondary</b>: {cart.secondarycolor}</div>
+                    
+                    { cart.material ? <div><b>Style:</b> {cart.material}</div> : null }
+                    { cart.basecolor ? <div><b>Primary Color:</b> {cart.basecolor}</div> : null }
+                    { cart.secondarycolor ? <div><b>Secondary Color:</b> {cart.secondarycolor}</div> : null }
+
+                    { cart.centerbase ? <div><b>Center Base:</b> {cart.centerbase}</div> : null }
+                    { cart.centercandle ? <div><b>Center Candle:</b> {cart.centercandle}</div> : null }
+                    { cart.centerglass ? <div><b>Center Glass:</b> {cart.centerbase}</div> : null }
+
                     <div><b>Decoration</b>: {cart.decoration}</div>
-                    <div><b>Deco Color</b>: {cart.decocolor}</div>
-                    { cart.type === 'centerpiece' ?
-                        <div><b>Candle</b>: {cart.centercandle}</div>
-                        : null
-                    }
-                    { cart.type === 'centerpiece' ?
-                        <div><b>Center Base</b>: {cart.centerbase}</div>
-                        : null
-                    }
+                    <div><b>Decoration Color</b>: {cart.decocolor}</div>
+                    <div><b>Decoration Color 2:</b> {cart.decocolor2}</div>
                     <div><b>Request</b>: {cart.request}</div>
                     <div><b>Quantity</b>: {cart.quantity}</div>
                 </div>
@@ -115,19 +114,18 @@ class Account extends Component {
                 ( cart.paid && cart.shipped
                 ? <div key={i} className={ 'admin-product-card ' + ( cart.type === 'headband' ? 'pink-border' : cart.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
                     <div className={ 'admin-order-header ' + ( cart.type === 'headband' ? 'pink-header' : cart.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{cart.type.toUpperCase()}</b></div>
-                    <div><b>Material</b>: {cart.material}</div>
-                    <div><b>Base</b>: {cart.basecolor}</div>
-                    <div><b>Secondary</b>: {cart.secondarycolor}</div>
+                    
+                    { cart.material ? <div><b>Style:</b> {cart.material}</div> : null }
+                    { cart.basecolor ? <div><b>Primary Color:</b> {cart.basecolor}</div> : null }
+                    { cart.secondarycolor ? <div><b>Secondary Color:</b> {cart.secondarycolor}</div> : null }
+
+                    { cart.centerbase ? <div><b>Center Base:</b> {cart.centerbase}</div> : null }
+                    { cart.centercandle ? <div><b>Center Candle:</b> {cart.centercandle}</div> : null }
+                    { cart.centerglass ? <div><b>Center Glass:</b> {cart.centerbase}</div> : null }
+
                     <div><b>Decoration</b>: {cart.decoration}</div>
-                    <div><b>Deco Color</b>: {cart.decocolor}</div>
-                    { cart.type === 'centerpiece' ?
-                        <div><b>Candle</b>: {cart.centercandle}</div>
-                        : null
-                    }
-                    { cart.type === 'centerpiece' ?
-                        <div><b>Center Base</b>: {cart.centerbase}</div>
-                        : null
-                    }
+                    <div><b>Decoration Color</b>: {cart.decocolor}</div>
+                    <div><b>Decoration Color 2:</b> {cart.decocolor2}</div>
                     <div><b>Request</b>: {cart.request}</div>
                     <div><b>Quantity</b>: {cart.quantity}</div>
                 </div>

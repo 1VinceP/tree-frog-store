@@ -59,16 +59,20 @@ export function aboutBody() {
 // Custom Order Page
 export function attributeDescription() {
     return(
-        <div>
-            <br/>
-            <p><b>Product Type:</b><br/>This is the big picture</p><br/>
-            <p><b>Material:</b><br/>What it's made out of. Currently only ribbon</p><br/>
-            <p><b>Base Color:</b><br/>The most prominent color</p><br/>
+        <div className='attribute-description'>
+            {/* <br/> */}
+            <p><b>Product Type:</b><br/>This is the type of item</p><br/>
+            <p><b>Material Style:</b><br/>This is design of the base headband</p><br/>
+            <p><b>Primary Color:</b><br/>The most prominent color</p><br/>
             <p><b>Secondary Color:</b><br/>The accent color</p><br/>
             <p><b>Decoration:</b><br/>An addition flair</p><br/>
-            <p><b>Decoration Color:</b><br/>The color of the decoration</p><br/>
-            <p><b>Centerpiece Candle:</b><br/>The candle design (if any)</p><br/>
+            <p><b>Decoration Color:</b><br/>The main color of the decoration</p><br/>
+            <p><b>Second Decoration Color:</b><br/>The accent color of the decoration</p><br/>
+            <p><b>Centerpiece Candle:</b><br/>The candle design</p><br/>
             <p><b>Centerpiece Base</b><br/>The type of base for the centerpiece</p><br/>
+            <p><b>Centerpiece Glass</b><br/>The main feature of the centerpiece</p><br/>
+            <p><b>Quantity</b><br/>How many of each item you would like</p><br/>
+            <p><b>Request</b><br/>Special notes or requests pertaining to the item</p><br/>
         </div>
     )
 }

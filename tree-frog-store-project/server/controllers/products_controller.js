@@ -12,9 +12,9 @@ module.exports = {
     },
 
     createProduct: ( req, res, next ) => {
-        const { type, material, baseColor, secondaryColor, decoration, decoColor, centerBase, centerCandle, request, creatorId, paid, shipped, quantity } = req.body
+        const { type, material, baseColor, secondaryColor, decoration, decoColor, decoColor2, centerBase, centerCandle, centerGlass, request, creatorId, paid, shipped, quantity } = req.body
 
-        req.app.get('db').create_product( [type, material, baseColor, secondaryColor, decoration, decoColor, centerBase, centerCandle, request, creatorId, paid, shipped, quantity] )
+        req.app.get('db').create_product( [type, material, baseColor, secondaryColor, decoration, decoColor, decoColor2, centerBase, centerCandle, centerGlass, request, creatorId, paid, shipped, quantity] )
             .then( response => {
                 console.log( chalk.yellow('New product added') )
                 res.status(200).send(response)

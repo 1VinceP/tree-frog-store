@@ -61,7 +61,7 @@ html {
 }
 
 .order-header:hover {
-    height: 500px;
+    height: 670px;
 }
 
 .order-center {
@@ -144,7 +144,51 @@ html {
         height: 80px;
     }
 
-    .order-hero-one {
+    .order-hero-head-one {
+        display: flex;
+        height: 175px;
+        width: 30%;
+        background-image: url('../../images/orderHeadband1.JPG');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 10px;
+        align-self: center;
+    }
+
+    .order-hero-head-two {
+        display: flex;
+        height: 175px;
+        width: 30%;
+        background-image: url('../../images/orderHeadband2.JPG');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 10px;
+        align-self: center;
+    }
+
+    .order-hero-flower-one {
+        display: flex;
+        height: 175px;
+        width: 30%;
+        background-image: url('../../images/orderFlower1.JPG');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 10px;
+        align-self: center;
+    }
+
+    .order-hero-flower-two {
+        display: flex;
+        height: 175px;
+        width: 30%;
+        background-image: url('../../images/orderFlower2.JPG');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 10px;
+        align-self: center;
+    }
+
+    .order-hero-center-one {
         display: flex;
         height: 305px;
         width: 30%;
@@ -155,7 +199,7 @@ html {
         align-self: center;
     }
     
-    .order-hero-two {
+    .order-hero-center-two {
         display: flex;
         height: 305px;
         width: 30%;
@@ -177,10 +221,38 @@ html {
     }
 
     .order-header {
-        width: 60%;
+        width: 57%;
     }
 
-    .order-hero-one {
+    .order-header:hover {
+        height: 500px;
+    }
+
+    .show-me {
+        width: 600px;
+    }
+
+    .order-hero-head-one {
+        height: 300px;
+        width: 400px;
+    }
+
+    .order-hero-head-two {
+        height: 300px;
+        width: 400px;
+    }
+
+    .order-hero-flower-one {
+        height: 300px;
+        width: 400px;
+    }
+
+    .order-hero-flower-two {
+        height: 300px;
+        width: 400px;
+    }
+
+    .order-hero-center-one {
         height: 533px;
         width: 400px;
     }
@@ -189,7 +261,7 @@ html {
         align-self: center;
     }
 
-    .order-hero-two {
+    .order-hero-center-two {
         height: 533px;
         width: 400px;
     }

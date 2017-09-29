@@ -14,13 +14,15 @@ class CustomOrder extends Component {
 
         this.state = {
             orderType: '',
-            orderMaterial: 'ribbon',
+            orderMaterial: '',
             orderBaseColor: '',
             orderSecondaryColor: '',
             orderDecoration: '',
             orderDecoColor: '',
+            orderDecoColor2: '',
             orderCenterBase: '',
             orderCenterCandle: '',
+            orderCenterGlass: '',
             orderRequest: '',
             quantity: 1,
 
@@ -61,31 +63,39 @@ class CustomOrder extends Component {
             this.setState({
                 [name]: value
             })
-            console.log(this.state)
+            // console.log(this.state)
         }
 
         
     };
 
     submitOrder() {
-        alert('Your item has been added to your cart');
-        let body = {
-            type: this.state.orderType,
-            material: this.state.orderMaterial,
-            baseColor: this.state.orderBaseColor,
-            secondaryColor: this.state.orderSecondaryColor,
-            decoration: this.state.orderDecoration,
-            decoColor: this.state.orderDecoColor,
-            centerBase: this.state.orderCenterBase,
-            centerCandle: this.state.orderCenterCandle,
-            request: this.state.orderRequest,
-            creatorId: this.state.userId,
-            paid: false,
-            shipped: false,
-            quantity: this.state.quantity
+        if( 1 > this.state.quantity || this.state.quantity > 20 ) {
+            alert('The quantity must be between 1 and 20')
+        } else {
+            alert('Your item has been added to your cart');
+            let body = {
+                type: this.state.orderType,
+                material: this.state.orderMaterial,
+                baseColor: this.state.orderBaseColor,
+                secondaryColor: this.state.orderSecondaryColor,
+                decoration: this.state.orderDecoration,
+                decoColor: this.state.orderDecoColor,
+                decoColor2: this.state.orderDecoColor2,
+                centerBase: this.state.orderCenterBase,
+                centerCandle: this.state.orderCenterCandle,
+                centerGlass: this.state.orderCenterGlass,
+                request: this.state.orderRequest,
+                creatorId: this.state.userId,
+                paid: false,
+                shipped: false,
+                quantity: this.state.quantity
+            }
+
+            axios.post( '/api/createProd', body )
         }
 
-        axios.post( '/api/createProd', body )
+        
     };
 
     resetSelections( value ) {
@@ -93,7 +103,7 @@ class CustomOrder extends Component {
             document.getElementById("orderForm").reset();
 
             if( value ) {
-                console.log( 'if:', value )
+                // console.log( 'if:', value )
                 document.getElementById('orderType').value = value
                 this.setState({
                     orderType: value,
@@ -108,7 +118,7 @@ class CustomOrder extends Component {
                     quantity: 1
                 })
             } else {
-                console.log('else')
+                // console.log('else')
                 this.setState({
                     orderType: '',
                     orderMaterial: '',
@@ -136,7 +146,6 @@ class CustomOrder extends Component {
 
     render() {
         
-
         return(
             <div className='order-body'>
 
@@ -162,7 +171,9 @@ class CustomOrder extends Component {
                     <div className='order-center'>
 
                         {/* HERO ON LEFT FOR LARGER DISPLAYS */}
-                        <div className='order-hero-one'></div>
+                        { this.state.orderType === 'headband' ? <div className='order-hero-head-one'></div> : null }
+                        { this.state.orderType === 'flower' ? <div className='order-hero-flower-one'></div> : null }
+                        { this.state.orderType === 'centerpiece' ? <div className='order-hero-center-one'></div> : null }
 
                         <form className='form-content' id='orderForm'>
                             <p>Product type: </p>
@@ -188,20 +199,23 @@ class CustomOrder extends Component {
                         </form>
                         
                         {/* HERO ON RIGHT FOR LARGER DISPLAYS */}
-                        <div className='order-hero-two'></div>
+                        { this.state.orderType === 'headband' ? <div className='order-hero-head-two'></div> : null }
+                        { this.state.orderType === 'flower' ? <div className='order-hero-flower-two'></div> : null }
+                        { this.state.orderType === 'centerpiece' ? <div className='order-hero-center-two'></div> : null }
 
                     </div>
 
                 </div>
 
-                <div className='image-display'>
+                {/* <div className='image-display'>
                     <h3>Product Preview</h3>
                     <p>*This is an example of what your product might look like, but may not be exact due to your specifications and our database*</p>
                         { this.state.orderType === 'headband' && this.state.orderDecoration === 'butterfly' ? <img src='https://photos-2.dropbox.com/t/2/AADFz574Y9bpZ60sXu-F-xH0Aha_b3Ri_DJhc88firHPHg/12/632623851/jpeg/32x32/1/_/1/2/DSCF9125.JPG/EMiZ0eAFGDYgBygH/Shs4Pjg5VDm0tnoCbQUYShCFd9A_sF7RwoOrjT5F3xA?size=1280x960&size_mode=3' alt='' />
                         : this.state.orderType === 'headband' && this.state.orderDecoration === 'rose' ? <img src="https://photos-6.dropbox.com/t/2/AAAnbmQAuI8lm0dKVMLw5PywLR5AV2QwAGYWfhsG53sY-g/12/632623851/jpeg/32x32/1/_/1/2/DSCF9129.JPG/EMiZ0eAFGDYgBygH/V60MDm2dVDuvblDGLYgHKZ0BBCVOK7IFsEzYT_Sz5K8?size=1280x960&size_mode=3" alt='' />
                         : null }
-                </div>
+                </div> */}
                 
+                <br/>
                 { this.state.user
                     ? <button className='submit-order-button' onClick={ this.submitOrder }>Submit Item to Cart</button>
                     : null

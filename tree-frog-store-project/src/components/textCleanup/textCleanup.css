@@ -64,6 +64,17 @@
     margin-top: -20px;
   }
 
+  .attribute-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .attribute-description p {
+      width: 250px;
+  }
+
   @media (min-width: 750px) {
       .home-buttons {
         height: 45px;
@@ -82,6 +93,18 @@
           width: 80%;
           padding: 20px 60px;
           font-size: 22px;
+      }
+
+      .attribute-description {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          margin: 20px 0;
+      }
+
+      .attribute-description p {
+        width: 250px;
+        margin-bottom: 25px;
       }
   }
 

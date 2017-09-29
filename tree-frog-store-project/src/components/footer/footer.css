@@ -6,7 +6,7 @@ html {
 }
   
 .footer {
-  height: 150px;
+  /* height: 150px; */
   width: 100%;
   background: beige;
   bottom: 0;
@@ -21,10 +21,21 @@ html {
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.contact-box {
+  width: 150px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
 .contact-info {
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  width: 50px;
 }
 
 .credits {
@@ -42,4 +53,13 @@ html {
 
 .copyright {
   align-self: flex-end;
+}
+
+@media (min-width: 750px) {
+  .contact-box {
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

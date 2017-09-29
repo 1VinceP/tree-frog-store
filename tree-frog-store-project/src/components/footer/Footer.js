@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import envelope from '../../images/envelope.svg';
+import facebookIcon from '../../images/facebook-icon.svg';
 import './footer.css';
 
 class Footer extends Component {
@@ -8,8 +10,10 @@ class Footer extends Component {
             <div className='footer'>
                 <div className='contact'>
                     <div><b>Contact Rebecca</b></div>
-                    {/* /////////////////////////// CHANGE EMAIL ADDRESS FOR PRODUCTION */}
-                    <a href='mailto:treefrogsreb@email.com' ><div className='contact-info'># placeholderemail@email.com #</div></a>
+                    <div className='contact-box'>
+                        <a href='mailto:treefrogsreb@gmail.com' className='link'><img src={envelope} alt='' className='contact-info'/></a>
+                        <a href='https://www.facebook.com/rebecca.s.palmer.5' target='_blank' rel="noopener noreferrer" className='link'><img src={facebookIcon} alt='' className='contact-info'/></a>
+                    </div>
                 </div>
                 <div className='credits'>
                     <div className='copyright'>&copy; Vincent Palmer 2017</div>

@@ -68,11 +68,19 @@ class Cart extends Component {
                 ( !cart.paid
                 ? <div key={i} className={'cart-product-card ' + ( cart.type === 'headband' ? 'pink-border' : cart.type === 'flower' ? 'yellow-border' : 'blue-border' ) } >
                     <div className={'cart-order-header ' + ( cart.type === 'headband' ? 'pink-header' : cart.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{cart.type.toUpperCase()}</b></div>
-                    <div><b>Mat:</b> {cart.material}</div>
-                    <div><b>BC:</b> {cart.basecolor}</div>
-                    <div><b>Deco:</b> {cart.decoration}</div>
-                    <div><b>DC:</b> {cart.decocolor}</div>
-                    <div><b>Req:</b> {cart.request}</div>
+
+                    { cart.material ? <div><b>Style:</b> {cart.material}</div> : null }
+                    { cart.basecolor ? <div><b>Primary Color:</b> {cart.basecolor}</div> : null }
+                    { cart.secondarycolor ? <div><b>Secondary Color:</b> {cart.secondarycolor}</div> : null }
+
+                    { cart.centerbase ? <div><b>Center Base:</b> {cart.centerbase}</div> : null }
+                    { cart.centercandle ? <div><b>Center Candle:</b> {cart.centercandle}</div> : null }
+                    { cart.centerglass ? <div><b>Center Glass:</b> {cart.centerbase}</div> : null }
+
+                    <div><b>Decoration:</b> {cart.decoration}</div>
+                    <div><b>Decoration Color:</b> {cart.decocolor}</div>
+                    <div><b>Decoration Color 2:</b> {cart.decocolor2}</div>
+                    <div><b>Request:</b> {cart.request}</div>
                     <div><b>Quantity:</b> {cart.quantity}</div>
                     <button className='delete-button' onClick={ () => this.deleteItem( cart.id ) }>&#10006;</button>
                 </div>

@@ -17,6 +17,7 @@ const strategy = require('./strategy')
     , email_controller = require('./controllers/email_controller')
     , session_controller = require('./controllers/session_controller');
 
+// app.use( express.static( `${__dirname}../build` ) )
 
 let app = express();
 app.use( bodyParser.json() );

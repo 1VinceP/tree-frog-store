@@ -27,7 +27,7 @@ class Header extends Component {
                     email: user.data.email
                 })
             }
-            console.log( 'user:', this.state.username )
+            // console.log( 'user:', this.state.username )
         })
 
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-// import { secretStripeKey } from './stripeKey';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import './checkout.css'
