@@ -79,7 +79,7 @@ class Admin extends Component {
         var notShippedMap = this.state.products.map( ( products, i ) => {
             return(
                 <div key={i}>
-                    { this.state.notShipped && products.paid && !products.shipped
+                    { this.state.notShipped && products.paid && !products.shipped && products.creatorid > 2
                     ? <div key={i} className={ 'admin-product-card ' + ( products.type === 'headband' ? 'pink-border' : products.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
                         <div className={ 'admin-order-header ' + ( products.type === 'headband' ? 'pink-header' : products.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{products.type.toUpperCase()}</b></div>
                     
@@ -123,7 +123,7 @@ class Admin extends Component {
         var shippedMap = this.state.products.map( ( products, i ) => {
             return(
                 <div key={i}>
-                    { this.state.shipped && products.paid && products.shipped
+                    { this.state.shipped && products.paid && products.shipped && products.creatorid > 2
                     ? <div key={i} className={ 'admin-product-card ' + ( products.type === 'headband' ? 'pink-border' : products.type === 'flower' ? 'yellow-border' : 'blue-border' ) }>
                         <div className={ 'admin-order-header ' + ( products.type === 'headband' ? 'pink-header' : products.type === 'flower' ? 'yellow-header' : 'blue-header' ) }><b>{products.type.toUpperCase()}</b></div>
                         

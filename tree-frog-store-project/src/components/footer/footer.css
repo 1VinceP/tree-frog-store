@@ -55,6 +55,11 @@ html {
   align-self: flex-end;
 }
 
+#facebook {
+  height: 39px;
+  margin-top: 6px;
+}
+
 @media (min-width: 750px) {
   .contact-box {
     width: 150px;

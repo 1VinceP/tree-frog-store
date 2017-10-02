@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export function description() {
     return(
         <div>
-            <i>Kanzashi</i> are a traditional style of personal decoration that encapsulates a wide variety of designs and materials.<br/><br/>
+            <i>Kanzashi</i> is a traditional style of personal decoration that encapsulates a wide variety of designs and materials.<br/><br/>
             The <i>Kanzashi flower</i> is an intricate design of material (generally silk or ribbon) that is folded into the shape of a flower.
         </div>
     )

@@ -12,7 +12,7 @@ class Footer extends Component {
                     <div><b>Contact Rebecca</b></div>
                     <div className='contact-box'>
                         <a href='mailto:treefrogsreb@gmail.com' className='link'><img src={envelope} alt='' className='contact-info'/></a>
-                        <a href='https://www.facebook.com/rebecca.s.palmer.5' target='_blank' rel="noopener noreferrer" className='link'><img src={facebookIcon} alt='' className='contact-info'/></a>
+                        <a href='https://www.facebook.com/rebecca.s.palmer.5' target='_blank' rel="noopener noreferrer" className='link'><img src={facebookIcon} alt='' className='contact-info' id='facebook'/></a>
                     </div>
                 </div>
                 <div className='credits'>
