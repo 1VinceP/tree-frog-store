@@ -11,13 +11,13 @@ const express = require('express')
     , stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
     , nodemailer = require('nodemailer');
 
-const strategy = require('./strategy')
-    , auth_controller = require('./controllers/auth_controller')
-    , products_controller = require('./controllers/products_controller')
-    , email_controller = require('./controllers/email_controller')
-    , session_controller = require('./controllers/session_controller');
+const strategy = require('./server/strategy')
+    , auth_controller = require('./server/controllers/auth_controller')
+    , products_controller = require('./server/controllers/products_controller')
+    , email_controller = require('./server/controllers/email_controller')
+    , session_controller = require('./server/controllers/session_controller');
 
-app.use( express.static( `${__dirname}../build` ) )
+app.use( express.static( `${__dirname}/build` ) )
 
 let app = express();
 app.use( bodyParser.json() );
