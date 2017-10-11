@@ -60,7 +60,7 @@ passport.use( module.exports = new Auth0Strategy({
 // postgres://ergdmstw:${productPass}@stampy.db.elephantsql.com:5432/ergdmstw
 console.log( chalk.magenta(process.env.SQLURL) );
 
-massive( process.env.SQLURL ).then( db => {
+massive( process.env.SQLURL2 ).then( db => {
         app.set( 'db', db );
     //     app.get('db').init.seed().then( res => console.log( res ) )
     // } ).catch( err => {
