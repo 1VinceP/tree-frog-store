@@ -58,7 +58,6 @@ passport.use( module.exports = new Auth0Strategy({
 ///////////// Connecting database
 // postgres:[username]:[password]@[host]:[port]/[database]
 // postgres://ergdmstw:${productPass}@stampy.db.elephantsql.com:5432/ergdmstw
-console.log( chalk.magenta(process.env.SQLURL) );
 
 massive( process.env.SQLURL2 ).then( db => {
         app.set( 'db', db );
