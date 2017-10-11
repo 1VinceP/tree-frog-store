@@ -169,7 +169,7 @@ app.post( '/api/send_email', email_controller.sendEmail );
 
 
 
-let port = 9060;
+let port = process.env.PORT || 9060;
 const portChalk = chalk.cyan.underline
 app.listen( port, () =>{
 console.log( portChalk(`listening on port ${port}`) )
