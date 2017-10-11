@@ -84,8 +84,8 @@ passport.deserializeUser( ( obj, done ) => {
 // AUTH CONTROLLER
 app.get( '/auth', passport.authenticate( 'auth0' ) );
 app.get( '/auth/callback', passport.authenticate( 'auth0', {
-    successReturnToOrRedirect: 'http://localhost:3000/#/',
-    failureRedirect: 'http://localhost:3000/#/',
+    successReturnToOrRedirect: 'https://tree-frog-store.herokuapp.com/#/',
+    failureRedirect: 'https://tree-frog-store.herokuapp.com/#/',
     failureFlash: true
 }) );
 app.get( '/auth/me', auth_controller.login );

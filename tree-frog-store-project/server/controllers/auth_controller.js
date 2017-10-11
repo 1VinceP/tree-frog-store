@@ -10,6 +10,6 @@ module.exports = {
 
     logout: function( req, res ) {
         req.logOut(); // Lougout function given from passport
-        return res.redirect( 302, 'http://localhost:3000/#/' ); // res.redirect comes from express
+        return res.redirect( 302, 'https://tree-frog-store.herokuapp.com/#/' ); // res.redirect comes from express
     }
 }
