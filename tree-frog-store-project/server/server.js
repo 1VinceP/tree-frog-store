@@ -17,7 +17,7 @@ const strategy = require('./strategy')
     , email_controller = require('./controllers/email_controller')
     , session_controller = require('./controllers/session_controller');
 
-// app.use( express.static( `${__dirname}../build` ) )
+app.use( express.static( `${__dirname}../build` ) )
 
 let app = express();
 app.use( bodyParser.json() );
@@ -59,7 +59,7 @@ passport.use( module.exports = new Auth0Strategy({
 // postgres:[username]:[password]@[host]:[port]/[database]
 // postgres://ergdmstw:${productPass}@stampy.db.elephantsql.com:5432/ergdmstw
 
-massive( process.env.SQLURL2 ).then( db => {
+massive( process.env.DATABASE_URL ).then( db => {
         app.set( 'db', db );
     //     app.get('db').init.seed().then( res => console.log( res ) )
     // } ).catch( err => {
