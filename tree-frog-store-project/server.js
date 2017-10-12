@@ -17,9 +17,10 @@ const strategy = require('./server/strategy')
     , email_controller = require('./server/controllers/email_controller')
     , session_controller = require('./server/controllers/session_controller');
 
+let app = express();
+
 app.use( express.static( `${__dirname}/build` ) )
 
-let app = express();
 app.use( bodyParser.json() );
 app.use( cors() );
 app.use( session({
@@ -61,6 +62,7 @@ passport.use( module.exports = new Auth0Strategy({
 
 massive( process.env.DATABASE_URL ).then( db => {
         app.set( 'db', db );
+        console.log( 'Database hooked up!' )
     //     app.get('db').init.seed().then( res => console.log( res ) )
     // } ).catch( err => {
     //     console.log( err );

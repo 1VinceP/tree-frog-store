@@ -32,7 +32,8 @@
     "eject": "react-scripts eject"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "server/server.js",
+  "main": "server.js",
+  "proxy": "https://tree-frog-store.herokuapp.com",
   "devDependencies": {},
   "keywords": [],
   "author": "",
