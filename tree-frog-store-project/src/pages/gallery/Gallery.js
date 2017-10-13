@@ -16,7 +16,7 @@ class Gallery extends Component {
     componentDidMount() {
         window.scrollTo( 0, 0 )
 
-        axios.get( '/api/products' ).then( response => {
+        axios.get( 'https://tree-frog-store.herokuapp.com/api/products' ).then( response => {
             console.log( response.data )
             this.setState({
                  gallery: response.data
