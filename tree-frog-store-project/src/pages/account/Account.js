@@ -54,7 +54,6 @@ class Account extends Component {
         this.setState({
             [name]: value
         })
-        // console.log( this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zip )
     };
 
     submitAddress() {
